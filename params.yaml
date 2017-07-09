@@ -1,0 +1,23 @@
+dim: 2
+
+Lx: [5, 6]
+Nx: [10, 10]
+Series: single
+components:
+    homo_A:
+        type: homo
+        phi: 0.5
+        species: [A]
+        N: 30
+    homo_B:
+        type: homo
+        phi: 0.5
+        species: [B]
+        N: 40
+
+max_iter: 1000
+output_freq:
+    energy: 100
+    grid: 500
+
+test: 4e-10

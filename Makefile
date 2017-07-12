@@ -20,15 +20,6 @@ $(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
 	@mkdir -p $(dir $@)
 	@echo " $(CC) $(CFLAGS) $(DFLAGS) $(INC) -c -o $@ $<"; $(CC) $(CFLAGS) $(DFLAGS) $(INC) -c -o $@ $<
 
-byref: spike/byref.cpp
-	$(CC) $(CFLAGS) $(INC) -o spike/byref spike/byref.cpp $(LIB)
-
-byref2: spike/byref2.cpp
-	$(CC) $(CFLAGS) $(INC) -o spike/byref2 spike/byref2.cpp $(LIB)
-
-byref3: spike/byref3.cpp
-	$(CC) $(CFLAGS) $(INC) -o spike/byref3 spike/byref3.cpp $(LIB)
-
 clean:
 	@echo " Cleaning...";
 	@echo " $(RM) -r $(BUILDDIR) $(TARGET)"; $(RM) -r $(BUILDDIR) $(TARGET)

@@ -17,5 +17,6 @@ Sim_Plan* Sim_Plan_Factory::New_Sim_Plan(YAML::Node input) {
   else {
     utils::die("sim_plan " + input["sim_plan"].as<std::string>() +
                " not recognized");
+    return NULL;
   }
 }

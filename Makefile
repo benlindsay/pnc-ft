@@ -12,6 +12,8 @@ CFLAGS := -std=c++11 -g -Wall
 LIB := -lyaml-cpp -L lib
 INC := -I include
 
+TESTER_SRC := test/tester.cpp $(filter-out src/main.cpp, $(SOURCES))
+
 $(TARGET): $(OBJECTS)
 	@echo " Linking..."
 	@echo " $(CC) $^ -o $(TARGET) $(LIB)"; $(CC) $^ -o $(TARGET) $(LIB)
@@ -26,6 +28,6 @@ clean:
 
 # Tests
 tester:
-	$(CC) $(CFLAGS) test/tester.cpp $(INC) $(LIB) -o bin/tester
+	$(CC) $(CFLAGS) $(TESTER_SRC) $(INC) $(LIB) -o bin/tester
 
 .PHONY: clean

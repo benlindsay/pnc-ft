@@ -34,5 +34,15 @@ int main(int argc, const char *argv[])
   sim_plan = Sim_Plan_Factory::New_Sim_Plan(input);
   test("Empty input", dynamic_cast<Single_Sim_Plan*>(sim_plan) != NULL);
 
+  // Single_Sim input
+  input = YAML::Load("{sim_plan: single_sim}");
+  sim_plan = Sim_Plan_Factory::New_Sim_Plan(input);
+  test("Single Sim Plan", dynamic_cast<Single_Sim_Plan*>(sim_plan) != NULL);
+
+  // Brent input
+  input = YAML::Load("{sim_plan: brent}");
+  sim_plan = Sim_Plan_Factory::New_Sim_Plan(input);
+  test("Brent Plan", dynamic_cast<Brent_Plan*>(sim_plan) != NULL);
+
   return 0;
 }

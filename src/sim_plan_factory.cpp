@@ -6,7 +6,7 @@
 
 Sim_Plan* Sim_Plan_Factory::New_Sim_Plan(YAML::Node input) {
   if (!input["sim_plan"] ||
-      input["sim_plan"].as<std::string>() == "sim_plan") {
+      input["sim_plan"].as<std::string>() == "single_sim") {
     std::cout << "sim_plan not included in input. "
               << "Assuming single_sim." << std::endl;
     return new Single_Sim_Plan(input);

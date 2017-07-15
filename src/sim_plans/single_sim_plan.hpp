@@ -7,17 +7,17 @@
 
 class Sim_Plan;
 
-#include "../sim_plan.hpp"
-// #include "../sim.hpp"
-#include "yaml-cpp/yaml.h"
 #include <iostream>
+#include "yaml-cpp/yaml.h"
+#include "../sim.hpp"
+#include "../sim_plan.hpp"
 
 class Single_Sim_Plan : public Sim_Plan {
  public:
   Single_Sim_Plan(YAML::Node input) { init(input); };
+  ~Single_Sim_Plan() {};
   void init(YAML::Node input);
   void run(void);
-  virtual ~Single_Sim_Plan() {};
 };
 
 #endif // SINGLE_SIM_PLAN_HPP

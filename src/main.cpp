@@ -33,7 +33,6 @@ int main(int argc, const char *argv[]) {
   // Information from input file is stored in input_reader object
   YAML::Node input = YAML::LoadFile(input_file_path);
   utils::to_lower(input);
-  std::cout << input << std::endl;
 
   // Generate simulation plan based on input file
   Sim_Plan *sim_plan = Sim_Plan_Factory::New_Sim_Plan(input);

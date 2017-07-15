@@ -5,17 +5,18 @@
 #ifndef BRENT_PLAN_HPP
 #define BRENT_PLAN_HPP
 
-#include "../globals.hpp"
-#include "../sim_plan.hpp"
-// #include "../sim.hpp"
+#include <iostream>
 #include "yaml-cpp/yaml.h"
+#include "../globals.hpp"
+#include "../sim.hpp"
+#include "../sim_plan.hpp"
 
 class Brent_Plan : public Sim_Plan {
  public:
   Brent_Plan(YAML::Node input) { init(input); };
+  ~Brent_Plan() {};
   void init(YAML::Node input);
   void run(void);
-  virtual ~Brent_Plan() {};
 };
 
 #endif // BRENT_PLAN_HPP

@@ -6,9 +6,10 @@
 
 void Single_Sim_Plan::init(YAML::Node input) {
   std::cout << "Initializing Single_Sim_Plan" << std::endl;
+  Sim_Plan::init(input);
 }
 
 void Single_Sim_Plan::run() {
-  std::cout << "Running Single Simulation" << std::endl;
-  // sim->run();
+  std::cout << "Running Single_Sim_Pan" << std::endl;
+  sim->run();
 }

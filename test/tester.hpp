@@ -8,6 +8,8 @@
 #include <iostream>
 #include <iomanip>
 #include "yaml-cpp/yaml.h"
+#include "../src/sim.hpp"
+#include "../src/sim_factory.hpp"
 #include "../src/sim_plan.hpp"
 #include "../src/sim_plan_factory.hpp"
 

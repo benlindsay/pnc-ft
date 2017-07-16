@@ -15,9 +15,9 @@ class Sim_Plan;
 class Single_Sim_Plan : public Sim_Plan {
  public:
   Single_Sim_Plan(YAML::Node input) { init(input); };
-  ~Single_Sim_Plan() {};
-  void init(YAML::Node input);
-  void run(void);
+  virtual ~Single_Sim_Plan() {};
+  virtual void init(YAML::Node input);
+  virtual void run(void);
 };
 
 #endif // SINGLE_SIM_PLAN_HPP

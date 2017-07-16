@@ -12,11 +12,11 @@
 class Canonical_Sim : public Sim {
  public:
   Canonical_Sim(YAML::Node input) { init(input); };
-  ~Canonical_Sim() {};
-  void init(YAML::Node input);
-  void run(void);
-  void write_grid_data(void);
-  void write_log_data(void);
+  virtual ~Canonical_Sim() {};
+  virtual void init(YAML::Node input);
+  virtual void run(void);
+  virtual void write_grid_data(void);
+  virtual void write_log_data(void);
 };
 
 #endif // CANONICAL_SIM_HPP

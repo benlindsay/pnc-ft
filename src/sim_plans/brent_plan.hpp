@@ -14,9 +14,9 @@
 class Brent_Plan : public Sim_Plan {
  public:
   Brent_Plan(YAML::Node input) { init(input); };
-  ~Brent_Plan() {};
-  void init(YAML::Node input);
-  void run(void);
+  virtual ~Brent_Plan() {};
+  virtual void init(YAML::Node input);
+  virtual void run(void);
 };
 
 #endif // BRENT_PLAN_HPP

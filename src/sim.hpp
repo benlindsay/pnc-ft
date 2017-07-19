@@ -7,29 +7,23 @@
 
 #include <iostream>
 #include "yaml-cpp/yaml.h"
+#include "box.hpp"
 
+class Box;
 // class FFTW_Utils;
 
 class Sim {
  public:
-  virtual ~Sim() {
-    delete Lx;
-    delete Nx;
-    delete dx;
-  };
-  virtual void init(YAML::Node input);
+  Sim(YAML::Node input);
+  virtual ~Sim();
   virtual void run(void) = 0;
   virtual void write_grid_data(void) = 0;
   virtual void write_log_data(void) = 0;
 
   // FFTW_Utils *fftw_utils;
+  std::vector<Box*> boxes;
 
-  // Box stuff
-  double *Lx;
-  int *Nx;
-  double V;
-  double *dx;
-  int M;
+  int dim;
   int iter;
   int max_iter;
   int grid_freq;

@@ -12,7 +12,8 @@ CFLAGS := -std=c++11 -g -Wall
 LIB := -lyaml-cpp -L lib
 INC := -I include
 
-TESTER_SRC := test/tester.cpp $(filter-out src/main.cpp, $(SOURCES))
+TESTS_SRC := tests/tests_main.o tests/tests_init.cpp
+TESTS_SRC += $(filter-out src/main.cpp, $(SOURCES))
 
 $(TARGET): $(OBJECTS)
 	@echo " Linking..."
@@ -26,8 +27,15 @@ clean:
 	@echo " Cleaning...";
 	@echo " $(RM) -r $(BUILDDIR) $(TARGET)"; $(RM) -r $(BUILDDIR) $(TARGET)
 
-# Tests
-tester:
-	$(CC) $(CFLAGS) $(TESTER_SRC) $(INC) $(LIB) -o bin/tester
-
 .PHONY: clean
+
+# Tests
+tests/tests_main.o: tests/tests_main.cpp tests/catch.hpp
+	$(CC) $(CFLAGS) $< -c -o $@
+
+bin/tests: $(TESTS_SRC)
+	$(CC) $(CFLAGS) $^ $(INC) $(LIB) -o $@
+
+tests: bin/tests
+
+.PHONY: tests

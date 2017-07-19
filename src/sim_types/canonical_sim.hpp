@@ -6,14 +6,15 @@
 #define CANONICAL_SIM_HPP
 
 #include <iostream>
+#include <vector>
 #include "yaml-cpp/yaml.h"
+#include "../box.hpp"
 #include "../sim.hpp"
 
 class Canonical_Sim : public Sim {
  public:
-  Canonical_Sim(YAML::Node input) { init(input); };
+  Canonical_Sim(YAML::Node input);
   virtual ~Canonical_Sim() {};
-  virtual void init(YAML::Node input);
   virtual void run(void);
   virtual void write_grid_data(void);
   virtual void write_log_data(void);

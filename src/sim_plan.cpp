@@ -4,6 +4,6 @@
 
 #include "sim_plan.hpp"
 
-void Sim_Plan::init(YAML::Node input) {
+Sim_Plan::Sim_Plan(YAML::Node input) {
   sim = Sim_Factory::New_Sim(input);
 }

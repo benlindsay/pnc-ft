@@ -13,8 +13,8 @@
 
 class Sim_Plan {
  public:
+  Sim_Plan(YAML::Node input);
   virtual ~Sim_Plan() { delete sim; };
-  virtual void init(YAML::Node input);
   virtual void run(void) = 0;
   Sim *sim;
 };

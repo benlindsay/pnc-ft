@@ -11,7 +11,7 @@
 #ifndef MAIN_HPP
 extern
 #endif
-int DIM, RANK, NPROCS;
+int RANK, NPROCS;
 
 #ifdef MAIN_HPP
 std::complex<double> I(0.0, 1.0);

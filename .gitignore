@@ -6,3 +6,6 @@ bin/*
 
 # Ignore Mac specific files
 .DS_Store
+
+# Ignore vim ctags file
+.tags

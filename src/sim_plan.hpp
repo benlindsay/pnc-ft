@@ -6,15 +6,17 @@
 #define SIM_PLAN_HPP
 
 #include "globals.hpp"
-// #include "sim.hpp"
 #include "yaml-cpp/yaml.h"
+#include "utils.hpp"
+#include "sim.hpp"
+#include "sim_factory.hpp"
 
 class Sim_Plan {
  public:
-  virtual void init(YAML::Node input) = 0;
+  Sim_Plan(YAML::Node input);
+  virtual ~Sim_Plan() { delete sim; };
   virtual void run(void) = 0;
-  virtual ~Sim_Plan() {};
-  // Sim *sim;
+  Sim *sim;
 };
 
 #endif // SIM_PLAN_HPP

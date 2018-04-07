@@ -4,11 +4,11 @@
 
 #include "brent_plan.hpp"
 
-void Brent_Plan::init(YAML::Node input) {
+Brent_Plan::Brent_Plan(YAML::Node input) : Sim_Plan(input) {
   std::cout << "Initializing Brent_Plan" << std::endl;
 }
 
 void Brent_Plan::run() {
-  std::cout << "Running Single Simulation" << std::endl;
-  // sim->run();
+  std::cout << "Running Brent_Plan" << std::endl;
+  sim->run();
 }

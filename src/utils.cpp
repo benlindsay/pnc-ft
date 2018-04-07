@@ -26,7 +26,8 @@ void utils::die(std::string message) {
 
 std::string utils::to_lower(std::string str) {
   // transform is from algorithm library
-  // See http://stackoverflow.com/questions/313970/how-to-convert-stdstring-to-lower-case
+  // See link below:
+  // stackoverflow.com/questions/313970/how-to-convert-stdstring-to-lower-case
   std::transform(str.begin(), str.end(), str.begin(), ::tolower);
   return str;
 }

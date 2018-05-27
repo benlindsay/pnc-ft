@@ -1,9 +1,0 @@
-#!/bin/bash
-#
-# configure
-#
-# Copyright (c) 2018 Ben Lindsay <benjlindsay@gmail.com>
-
-# This file is intentionally left blank. Travis by default uses the test
-# command `./configure && make && make test`, but we don't need to configure
-# anything.

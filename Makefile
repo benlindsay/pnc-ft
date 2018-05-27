@@ -1,52 +1,67 @@
-CC := g++ # This is the main compiler
+# compiler variables and flags
+CC := g++
 # CC := mpic++
-SRCDIR := src
-BUILDDIR := build
+CFLAGS := -std=c++11 -g -Wall
+# DFLAGS := -DMPI
+LIB := -L lib -lyaml-cpp
+INC := -I include
 TARGET := bin/pnc-ft
 
+# build sources and objects lists
+SRCDIR := src
+BUILDDIR := build
 SRCEXT := cpp
 SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
 OBJECTS := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
-CFLAGS := -std=c++11 -g -Wall
-# DFLAGS := -DMPI
-LIB := -lyaml-cpp -L lib
-INC := -I include
+
+# yaml-cpp install variables
 PWD := $(shell pwd)
 YAML_CPP := /tmp/yaml-cpp
+YAML_CPP_INSTALL_PREFIX := $(PWD)
+CMAKE_CC := $(shell which gcc)
+CMAKE_CXX := $(shell which g++)
+YAML_FILES := lib/libyaml-cpp.a include/yaml-cpp/yaml.h
 
-TESTS_SRC := tests/tests_main.o tests/tests_init.cpp
-TESTS_SRC += $(filter-out src/main.cpp, $(SOURCES))
+# sources for tests
+TEST_SRC := test/test_main.o test/test_init.cpp
+TEST_SRC += $(filter-out src/main.cpp, $(SOURCES))
 
-$(TARGET): $(OBJECTS) lib/libyaml-cpp.a
+$(TARGET): $(OBJECTS) $(YAML_FILES)
 	@echo " Linking..."
-	@echo " $(CC) $^ -o $(TARGET) $(LIB)"; $(CC) $^ -o $(TARGET) $(LIB)
+	@mkdir -p $(dir $@)
+	$(CC) $^ -o $(TARGET) $(LIB)
 
 $(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
 	@mkdir -p $(dir $@)
-	@echo " $(CC) $(CFLAGS) $(DFLAGS) $(INC) -c -o $@ $<"; $(CC) $(CFLAGS) $(DFLAGS) $(INC) -c -o $@ $<
+	$(CC) $(CFLAGS) $(DFLAGS) $(INC) -c -o $@ $<
 
+# Install yaml-cpp files in include/ and lib/ under YAML_CPP_INSTALL_PREFIX,
+# which is this project's root directory by default
 lib/libyaml-cpp.a:
 	rm -rf $(YAML_CPP)
 	git clone https://github.com/jbeder/yaml-cpp $(YAML_CPP) && \
 	    mkdir $(YAML_CPP)/build && \
 	    cd $(YAML_CPP)/build && \
-	    cmake .. && \
+	    CC=$(CMAKE_CC) CXX=$(CMAKE_CXX) \
+	        cmake -DCMAKE_INSTALL_PREFIX=$(YAML_CPP_INSTALL_PREFIX) .. && \
 	    make && \
-	    cp libyaml-cpp.a $(PWD)/lib/
+	    make install
 
 clean:
 	@echo " Cleaning...";
-	@echo " $(RM) -r $(BUILDDIR) bin/*"; $(RM) -r $(BUILDDIR) bin/*
+	$(RM) -r $(BUILDDIR) bin/* test/*.o
 
 .PHONY: clean
 
-# Tests
-tests/tests_main.o: tests/tests_main.cpp tests/catch.hpp
+# Test stuff
+test/test_main.o: test/test_main.cpp test/catch.hpp
 	$(CC) $(CFLAGS) $< -c -o $@
 
-bin/tests: $(TESTS_SRC)
-	$(CC) $(CFLAGS) $^ $(INC) $(LIB) -o $@
+bin/test: $(TEST_SRC) $(YAML_FILES)
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) $^ $(INC) -o $@ $(LIB)
 
-tests: bin/tests
+test: bin/test
+	bin/test
 
-.PHONY: tests
+.PHONY: test

@@ -1,4 +1,4 @@
-// tests_main.cpp
+// test_main.cpp
 //
 // Copyright (c) 2017 Ben Lindsay <benjlindsay@gmail.com>
 

@@ -1,9 +1,9 @@
-// tests_init.cpp
+// test_init.cpp
 //
 // Copyright (c) 2017 Ben Lindsay <benjlindsay@gmail.com>
 #include "catch.hpp"
 
-#include "tests_init.hpp"
+#include "test_init.hpp"
 
 TEST_CASE("Bare bones input", "[input]") {
   const char* yaml_1 =

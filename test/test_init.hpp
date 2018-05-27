@@ -1,9 +1,9 @@
-// tests-init.hpp
+// test-init.hpp
 //
 // Copyright (c) 2017 Ben Lindsay <benjlindsay@gmail.com>
 
-#ifndef TESTS_INIT_HPP
-#define TESTS_INIT_HPP
+#ifndef TEST_INIT_HPP
+#define TEST_INIT_HPP
 
 #include <iostream>
 
@@ -15,4 +15,4 @@
 #include "../src/sim_plan.hpp"
 #include "../src/sim_plan_factory.hpp"
 
-#endif // TESTS_INIT_HPP
+#endif // TEST_INIT_HPP

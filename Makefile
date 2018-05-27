@@ -20,24 +20,25 @@ YAML_CPP := /tmp/yaml-cpp
 YAML_CPP_INSTALL_PREFIX := $(PWD)
 CMAKE_CC := $(shell which gcc)
 CMAKE_CXX := $(shell which g++)
-YAML_FILES := lib/libyaml-cpp.a include/yaml-cpp/yaml.h
+YAML_FILES := $(YAML_CPP_INSTALL_PREFIX)/lib/libyaml-cpp.a \
+              $(YAML_CPP_INSTALL_PREFIX)/include/yaml-cpp/yaml.h
 
 # sources for tests
 TEST_SRC := test/test_main.o test/test_init.cpp
 TEST_SRC += $(filter-out src/main.cpp, $(SOURCES))
 
-$(TARGET): $(OBJECTS)
+$(TARGET): $(YAML_FILES) $(OBJECTS)
 	@echo " Linking..."
 	@mkdir -p $(dir $@)
-	$(CC) $^ -o $(TARGET) $(LIB)
+	$(CC) $(OBJECTS) -o $(TARGET) $(LIB)
 
-$(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT) $(YAML_FILES)
+$(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(DFLAGS) $(INC) -c -o $@ $<
 
 # Install yaml-cpp files in include/ and lib/ under YAML_CPP_INSTALL_PREFIX,
 # which is this project's root directory by default
-lib/libyaml-cpp.a:
+$(YAML_FILES):
 	rm -rf $(YAML_CPP)
 	git clone https://github.com/jbeder/yaml-cpp $(YAML_CPP) && \
 	    mkdir $(YAML_CPP)/build && \
@@ -54,7 +55,7 @@ clean:
 hardclean: clean
 	$(RM) -r include lib
 
-.PHONY: clean hardclean
+.PHONY: yaml-cpp clean hardclean
 
 # Test stuff
 test/test_main.o: test/test_main.cpp test/catch.hpp

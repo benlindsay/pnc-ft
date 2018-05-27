@@ -1,8 +1,10 @@
-# Enable C++ support
 language: cpp
 addons:
   apt:
     sources:
       - ubuntu-toolchain-r-test
     packages:
-      - g++-4.9
+      - gcc-5.4
+      - g++-5.4
+before_install:
+  - make --version

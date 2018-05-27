@@ -5,8 +5,6 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - g++-5
-before_install:
-  - make --version
 script:
   - make test
-  - make -d
+  - make

@@ -1,8 +1,7 @@
-# Ignore the build and lib dirs
-build
-
-# Ignore any executables and object files
-bin/*
+bin/
+build/
+include/
+lib/
 *.o
 
 # Ignore Mac specific files

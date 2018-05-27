@@ -7,3 +7,4 @@ addons:
       - g++-5
 before_install:
   - make --version
+script: make -d test

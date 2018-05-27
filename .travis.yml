@@ -3,4 +3,5 @@ language: cpp
 addons:
   apt:
     packages:
-      - g++-5.4
+      - gcc-5
+      - g++-5

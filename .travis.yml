@@ -13,6 +13,10 @@ matrix:
           - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
 before_install:
   - eval "${MATRIX_EVAL}"
-  - eval "sudo unlink /usr/bin/gcc && sudo ln -s ${CC} /usr/bin/gcc"
-  - eval "sudo unlink /usr/bin/g++ && sudo ln -s ${CXX} /usr/bin/g++"
+  - echo $CC
+  - echo $CXX
+  - echo $(g++ --version)
+  - sudo unlink /usr/bin/gcc && sudo ln -s $CC /usr/bin/gcc
+  - sudo unlink /usr/bin/g++ && sudo ln -s $CXX /usr/bin/g++
+  - echo $(g++ --version)
 script: make && make test

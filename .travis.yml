@@ -10,9 +10,9 @@ matrix:
           packages:
             - g++-5
         env:
-          - MATRIX_EVAL="CC=/usr/bin/gcc-5 && CXX=/usr/bin/g++-5"
+          - CC="/usr/bin/gcc-5"
+          - CXX="/usr/bin/g++-5"
 before_install:
-  - eval "${MATRIX_EVAL}"
   - echo $CC
   - echo $CXX
   - echo $(g++ --version)

@@ -26,12 +26,12 @@ YAML_FILES := lib/libyaml-cpp.a include/yaml-cpp/yaml.h
 TEST_SRC := test/test_main.o test/test_init.cpp
 TEST_SRC += $(filter-out src/main.cpp, $(SOURCES))
 
-$(TARGET): $(OBJECTS) $(YAML_FILES)
+$(TARGET): $(OBJECTS)
 	@echo " Linking..."
 	@mkdir -p $(dir $@)
 	$(CC) $^ -o $(TARGET) $(LIB)
 
-$(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
+$(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT) $(YAML_FILES)
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(DFLAGS) $(INC) -c -o $@ $<
 

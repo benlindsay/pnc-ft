@@ -6,5 +6,8 @@ addons:
     packages:
       - g++-5
 script:
+  - echo $(which g++)
+  - echo $(g++ --version)
+  - echo $(/usr/bin/g++ --version)
   - make
   - make test

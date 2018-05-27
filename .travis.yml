@@ -6,5 +6,5 @@ addons:
     packages:
       - g++-5
 script:
-  - make test
   - make
+  - make test

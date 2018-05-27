@@ -49,9 +49,12 @@ lib/libyaml-cpp.a:
 
 clean:
 	@echo " Cleaning...";
-	$(RM) -r $(BUILDDIR) bin/* test/*.o
+	$(RM) -r $(BUILDDIR) bin test/*.o
 
-.PHONY: clean
+hardclean: clean
+	$(RM) -r include lib
+
+.PHONY: clean hardclean
 
 # Test stuff
 test/test_main.o: test/test_main.cpp test/catch.hpp

@@ -1,2 +1,6 @@
 # Enable C++ support
 language: cpp
+addons:
+  apt:
+    packages:
+      - g++-5.4

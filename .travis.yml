@@ -8,28 +8,39 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
+            - g++-4.8
+      env:
+        - GCC_V="4.8"
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
             - g++-5
       env:
-        - CC="/usr/bin/gcc-5"
-        - CXX="/usr/bin/g++-5"
-        - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
+        - GCC_V="5"
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-6
+      env:
+        - GCC_V="6"
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-7
+      env:
+        - GCC_V="7"
 before_install:
-  - echo $CXX
-  - echo "${CXX}"
-  - echo $MATRIX_EVAL
-  - echo "${MATRIX_EVAL}"
-  - eval "${MATRIX_EVAL}"
-  - echo $CXX
-  - echo "${CXX}"
   - echo $(g++ --version)
-  - sudo unlink /usr/bin/gcc && sudo ln -s $CC /usr/bin/gcc
-  - sudo unlink /usr/bin/g++ && sudo ln -s $CXX /usr/bin/g++
-  - echo $CXX
-  - echo "${CXX}"
-  - echo $(g++ --version)
-  - sudo unlink /usr/bin/gcc && sudo ln -s /usr/bin/gcc-5 /usr/bin/gcc
-  - sudo unlink /usr/bin/g++ && sudo ln -s /usr/bin/g++-5 /usr/bin/g++
-  - echo $CXX
-  - echo "${CXX}"
+  - sudo unlink /usr/bin/gcc && sudo ln -s /usr/bin/gcc-$GCC_V /usr/bin/gcc
+  - sudo unlink /usr/bin/g++ && sudo ln -s /usr/bin/g++-$GCC_V /usr/bin/g++
   - echo $(g++ --version)
 script: make && make test

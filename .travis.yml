@@ -17,6 +17,15 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
+            - g++-4.9
+      env:
+        - GCC_V="4.9"
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
             - g++-5
       env:
         - GCC_V="5"
@@ -38,6 +47,15 @@ matrix:
             - g++-7
       env:
         - GCC_V="7"
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-8
+      env:
+        - GCC_V="8"
 before_install:
   - echo $(g++ --version)
   - sudo unlink /usr/bin/gcc && sudo ln -s /usr/bin/gcc-$GCC_V /usr/bin/gcc

@@ -4,6 +4,4 @@
 
 #include "sim_plan.hpp"
 
-Sim_Plan::Sim_Plan(YAML::Node input) {
-  sim = Sim_Factory::New_Sim(input);
-}
+Sim_Plan::Sim_Plan(YAML::Node input) { sim = Sim_Factory::New_Sim(input); }

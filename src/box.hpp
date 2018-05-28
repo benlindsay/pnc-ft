@@ -5,12 +5,12 @@
 #ifndef BOX_HPP
 #define BOX_HPP
 
-#include <set>
 #include <cmath>
-#include "yaml-cpp/yaml.h"
+#include <set>
 #include "globals.hpp"
-#include "utils.hpp"
 #include "sim.hpp"
+#include "utils.hpp"
+#include "yaml-cpp/yaml.h"
 // #include "fftw_utils.hpp"
 // #include "component.hpp"
 
@@ -34,4 +34,4 @@ class Box {
   int M;
 };
 
-#endif // BOX_HPP
+#endif  // BOX_HPP

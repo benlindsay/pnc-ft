@@ -6,16 +6,16 @@
 #define BRENT_PLAN_HPP
 
 #include <iostream>
-#include "yaml-cpp/yaml.h"
 #include "../globals.hpp"
 #include "../sim.hpp"
 #include "../sim_plan.hpp"
+#include "yaml-cpp/yaml.h"
 
 class Brent_Plan : public Sim_Plan {
  public:
   Brent_Plan(YAML::Node input);
-  virtual ~Brent_Plan() {};
+  virtual ~Brent_Plan(){};
   virtual void run(void);
 };
 
-#endif // BRENT_PLAN_HPP
+#endif  // BRENT_PLAN_HPP

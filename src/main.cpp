@@ -5,12 +5,11 @@
 #include "main.hpp"
 
 int main(int argc, const char *argv[]) {
-
 #ifdef MPI
   // MPI initialization stuff
-  MPI_Init( &argc , &argv );
-  MPI_Comm_rank( MPI_COMM_WORLD, &RANK);
-  MPI_Comm_size( MPI_COMM_WORLD, &NPROCS);
+  MPI_Init(&argc, &argv);
+  MPI_Comm_rank(MPI_COMM_WORLD, &RANK);
+  MPI_Comm_size(MPI_COMM_WORLD, &NPROCS);
   fftw_mpi_init();
 #else
   RANK = 0;
@@ -21,8 +20,8 @@ int main(int argc, const char *argv[]) {
   if (argc < 2) {
     // If input file wasn't passed as command line argument,
     // print usage string and exit program
-    std::cout << "Usage: " << std::string(argv[0]) <<
-      " input_file_path" << std::endl;
+    std::cout << "Usage: " << std::string(argv[0]) << " input_file_path"
+              << std::endl;
     utils::die();
   } else {
     input_file_path = argv[1];

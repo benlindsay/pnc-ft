@@ -9,11 +9,9 @@ Sim* Sim_Factory::New_Sim(YAML::Node input) {
     std::cout << "sim_type not included in input. "
               << "Assuming canonical simulation." << std::endl;
     return new Canonical_Sim(input);
-  }
-  else if (input["sim_type"].as<std::string>() == "canonical") {
+  } else if (input["sim_type"].as<std::string>() == "canonical") {
     return new Canonical_Sim(input);
-  }
-  else {
+  } else {
     utils::die("sim_type " + input["sim_type"].as<std::string>() +
                " not recognized");
     return NULL;

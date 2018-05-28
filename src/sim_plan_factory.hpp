@@ -6,14 +6,14 @@
 #define SIM_PLAN_FACTORY_HPP
 
 #include "sim_plan.hpp"
-#include "sim_plans/single_sim_plan.hpp"
 #include "sim_plans/brent_plan.hpp"
-#include "yaml-cpp/yaml.h"
+#include "sim_plans/single_sim_plan.hpp"
 #include "utils.hpp"
+#include "yaml-cpp/yaml.h"
 
 class Sim_Plan_Factory {
  public:
   static Sim_Plan *New_Sim_Plan(YAML::Node input);
 };
 
-#endif // SIM_PLAN_FACTORY_HPP
+#endif  // SIM_PLAN_FACTORY_HPP

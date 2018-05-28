@@ -7,14 +7,14 @@
 
 TEST_CASE("Bare bones input", "[input]") {
   const char* yaml_1 =
-    "dim: 3\n"
-    "lx:  [1,2,3]\n"
-    "nx:  [10,10,10]\n";
+      "dim: 3\n"
+      "lx:  [1,2,3]\n"
+      "nx:  [10,10,10]\n";
   YAML::Node input = YAML::Load(yaml_1);
 
   // Test sim_plan Input
   std::cout.setstate(std::ios_base::failbit);
-  Sim_Plan *sim_plan = Sim_Plan_Factory::New_Sim_Plan(input);
+  Sim_Plan* sim_plan = Sim_Plan_Factory::New_Sim_Plan(input);
   std::cout.clear();
 
   REQUIRE(dynamic_cast<Single_Sim_Plan*>(sim_plan) != NULL);
@@ -27,9 +27,9 @@ TEST_CASE("Bare bones input", "[input]") {
   }
 
   const char* yaml_2 =
-    "dim: 3\n"
-    "dx:  [.1,.2,.3]\n"
-    "nx:  [10,10,10]\n";
+      "dim: 3\n"
+      "dx:  [.1,.2,.3]\n"
+      "nx:  [10,10,10]\n";
   input = YAML::Load(yaml_2);
 
   // Test sim_plan Input
@@ -47,9 +47,9 @@ TEST_CASE("Bare bones input", "[input]") {
   }
 
   const char* yaml_3 =
-    "dim: 3\n"
-    "dx:  [.1,.1,.1]\n"
-    "lx:  [0.9,1.0,1.05]\n";
+      "dim: 3\n"
+      "dx:  [.1,.1,.1]\n"
+      "lx:  [0.9,1.0,1.05]\n";
   input = YAML::Load(yaml_3);
 
   // Test sim_plan Input

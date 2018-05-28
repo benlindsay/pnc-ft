@@ -5,13 +5,14 @@
 #ifndef GLOBALS_HPP
 #define GLOBALS_HPP
 
-#include <iostream>
 #include <complex>
+#include <iostream>
 
 #ifndef MAIN_HPP
 extern
 #endif
-int RANK, NPROCS;
+    int RANK,
+    NPROCS;
 
 #ifdef MAIN_HPP
 std::complex<double> I(0.0, 1.0);
@@ -21,4 +22,4 @@ extern std::complex<double> I;
 
 #define PI 3.14159265358979323846263383
 
-#endif // GLOBALS_HPP
+#endif  // GLOBALS_HPP

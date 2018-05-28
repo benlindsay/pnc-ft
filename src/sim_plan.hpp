@@ -6,10 +6,10 @@
 #define SIM_PLAN_HPP
 
 #include "globals.hpp"
-#include "yaml-cpp/yaml.h"
-#include "utils.hpp"
 #include "sim.hpp"
 #include "sim_factory.hpp"
+#include "utils.hpp"
+#include "yaml-cpp/yaml.h"
 
 class Sim_Plan {
  public:
@@ -19,4 +19,4 @@ class Sim_Plan {
   Sim *sim;
 };
 
-#endif // SIM_PLAN_HPP
+#endif  // SIM_PLAN_HPP

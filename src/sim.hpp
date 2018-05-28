@@ -6,8 +6,8 @@
 #define SIM_HPP
 
 #include <iostream>
-#include "yaml-cpp/yaml.h"
 #include "box.hpp"
+#include "yaml-cpp/yaml.h"
 
 class Box;
 // class FFTW_Utils;
@@ -30,4 +30,4 @@ class Sim {
   int log_freq;
 };
 
-#endif // SIM_HPP
+#endif  // SIM_HPP

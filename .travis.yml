@@ -7,9 +7,7 @@ matrix:
         apt:
           sources:
             - ubuntu-toolchain-r-test
-            - llvm-toolchain-precise
           packages:
-            - clang-format-5.0
             - g++-4.8
       env:
         - GCC_V="4.8"
@@ -18,9 +16,7 @@ matrix:
         apt:
           sources:
             - ubuntu-toolchain-r-test
-            - llvm-toolchain-precise
           packages:
-            - clang-format-5.0
             - g++-4.9
       env:
         - GCC_V="4.9"
@@ -29,9 +25,7 @@ matrix:
         apt:
           sources:
             - ubuntu-toolchain-r-test
-            - llvm-toolchain-precise
           packages:
-            - clang-format-5.0
             - g++-5
       env:
         - GCC_V="5"
@@ -40,9 +34,7 @@ matrix:
         apt:
           sources:
             - ubuntu-toolchain-r-test
-            - llvm-toolchain-precise
           packages:
-            - clang-format-5.0
             - g++-6
       env:
         - GCC_V="6"
@@ -51,9 +43,7 @@ matrix:
         apt:
           sources:
             - ubuntu-toolchain-r-test
-            - llvm-toolchain-precise
           packages:
-            - clang-format-5.0
             - g++-7
       env:
         - GCC_V="7"
@@ -62,9 +52,7 @@ matrix:
         apt:
           sources:
             - ubuntu-toolchain-r-test
-            - llvm-toolchain-precise
           packages:
-            - clang-format-5.0
             - g++-8
       env:
         - GCC_V="8"

@@ -16,4 +16,4 @@ class Sim_Plan_Factory {
   static Sim_Plan *New_Sim_Plan(YAML::Node input);
 };
 
-#endif  // SIM_PLAN_FACTORY_HPP
+#endif // SIM_PLAN_FACTORY_HPP

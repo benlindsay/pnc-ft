@@ -30,4 +30,4 @@ class Sim {
   int log_freq;
 };
 
-#endif  // SIM_HPP
+#endif // SIM_HPP

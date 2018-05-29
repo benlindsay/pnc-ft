@@ -19,4 +19,4 @@ class Sim_Plan {
   Sim *sim;
 };
 
-#endif  // SIM_PLAN_HPP
+#endif // SIM_PLAN_HPP

@@ -12,4 +12,4 @@
 #include "utils.hpp"
 #include "yaml-cpp/yaml.h"
 
-#endif  // MAIN_HPP
+#endif // MAIN_HPP

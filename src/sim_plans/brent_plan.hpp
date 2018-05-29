@@ -18,4 +18,4 @@ class Brent_Plan : public Sim_Plan {
   virtual void run(void);
 };
 
-#endif  // BRENT_PLAN_HPP
+#endif // BRENT_PLAN_HPP

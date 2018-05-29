@@ -34,4 +34,4 @@ class Box {
   int M;
 };
 
-#endif // BOX_HPP
+#endif  // BOX_HPP

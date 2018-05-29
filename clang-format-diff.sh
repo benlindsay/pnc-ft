@@ -11,4 +11,4 @@ file_list=$( find src test ! -path 'test/catch.hpp' \
 # Show the changes made by diffing all source files except catch.hpp.
 # Failing exit code if any changes are made.
 
-diff -u <(cat $file_list) <(clang-format $file_list)
+diff -u <(cat $file_list) <(clang-format -style=Google $file_list)

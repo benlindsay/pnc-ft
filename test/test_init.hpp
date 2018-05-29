@@ -15,4 +15,4 @@
 #include "../src/sim_plan_factory.hpp"
 #include "yaml-cpp/yaml.h"
 
-#endif // TEST_INIT_HPP
+#endif  // TEST_INIT_HPP

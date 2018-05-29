@@ -20,4 +20,4 @@ class Canonical_Sim : public Sim {
   virtual void write_log_data(void);
 };
 
-#endif // CANONICAL_SIM_HPP
+#endif  // CANONICAL_SIM_HPP

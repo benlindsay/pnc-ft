@@ -15,4 +15,4 @@ class Sim_Factory {
   static Sim *New_Sim(YAML::Node input);
 };
 
-#endif // SIM_FACTORY_HPP
+#endif  // SIM_FACTORY_HPP

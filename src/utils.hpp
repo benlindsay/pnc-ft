@@ -18,4 +18,4 @@ std::string to_lower(std::string);
 void to_lower(YAML::Node);
 }
 
-#endif // UTILS_HPP
+#endif  // UTILS_HPP

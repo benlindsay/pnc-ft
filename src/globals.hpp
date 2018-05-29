@@ -22,4 +22,4 @@ extern std::complex<double> I;
 
 #define PI 3.14159265358979323846263383
 
-#endif // GLOBALS_HPP
+#endif  // GLOBALS_HPP

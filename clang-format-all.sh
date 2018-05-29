@@ -6,4 +6,4 @@
 
 find src test ! -path 'test/catch.hpp' \
   \( -name '*.cpp' -or -name '*.hpp' -or -name '*.c' -or -name '*.h' \) \
-  | xargs -I% clang-format -i %
+  | xargs -I% clang-format -style=Google -i %

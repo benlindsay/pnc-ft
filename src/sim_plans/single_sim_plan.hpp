@@ -19,4 +19,4 @@ class Single_Sim_Plan : public Sim_Plan {
   virtual void run(void);
 };
 
-#endif // SINGLE_SIM_PLAN_HPP
+#endif  // SINGLE_SIM_PLAN_HPP

@@ -7,7 +7,9 @@ matrix:
         apt:
           sources:
             - ubuntu-toolchain-r-test
+            - llvm-toolchain-precise
           packages:
+            - clang-format-5.0
             - g++-4.8
       env:
         - GCC_V="4.8"
@@ -16,7 +18,9 @@ matrix:
         apt:
           sources:
             - ubuntu-toolchain-r-test
+            - llvm-toolchain-precise
           packages:
+            - clang-format-5.0
             - g++-4.9
       env:
         - GCC_V="4.9"
@@ -25,7 +29,9 @@ matrix:
         apt:
           sources:
             - ubuntu-toolchain-r-test
+            - llvm-toolchain-precise
           packages:
+            - clang-format-5.0
             - g++-5
       env:
         - GCC_V="5"
@@ -34,7 +40,9 @@ matrix:
         apt:
           sources:
             - ubuntu-toolchain-r-test
+            - llvm-toolchain-precise
           packages:
+            - clang-format-5.0
             - g++-6
       env:
         - GCC_V="6"
@@ -43,7 +51,9 @@ matrix:
         apt:
           sources:
             - ubuntu-toolchain-r-test
+            - llvm-toolchain-precise
           packages:
+            - clang-format-5.0
             - g++-7
       env:
         - GCC_V="7"
@@ -52,7 +62,9 @@ matrix:
         apt:
           sources:
             - ubuntu-toolchain-r-test
+            - llvm-toolchain-precise
           packages:
+            - clang-format-5.0
             - g++-8
       env:
         - GCC_V="8"
@@ -61,4 +73,6 @@ before_install:
   - sudo unlink /usr/bin/gcc && sudo ln -s /usr/bin/gcc-$GCC_V /usr/bin/gcc
   - sudo unlink /usr/bin/g++ && sudo ln -s /usr/bin/g++-$GCC_V /usr/bin/g++
   - echo $(g++ --version)
-script: make && make test
+script:
+  - diff -u <(cat src/**/* test/**/*) <(clang-format src/**/* test/**/*)
+  - make && make test

@@ -74,5 +74,5 @@ before_install:
   - sudo unlink /usr/bin/g++ && sudo ln -s /usr/bin/g++-$GCC_V /usr/bin/g++
   - echo $(g++ --version)
 script:
-  - diff -u <(cat src/**/* test/**/*) <(clang-format src/**/* test/**/*)
+  - ./clang-format-diff.sh
   - make && make test

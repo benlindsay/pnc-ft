@@ -17,28 +17,26 @@ Box::Box(YAML::Node input, Sim *_sim) : sim(_sim) {
   for (YAML::const_iterator it = input.begin(); it != input.end(); ++it) {
     if (it->first.as<std::string>() == "lx") {
       if (input["lx"].size() != size_t(sim->dim)) {
-        utils::die("Length of lx must equal sim->dim ("
-                   + std::to_string(sim->dim) + ")");
+        utils::die("Length of lx must equal sim->dim (" +
+                   std::to_string(sim->dim) + ")");
       }
       for (std::size_t i = 0; i < size_t(sim->dim); i++) {
         Lx[i] = input["lx"][i].as<double>();
       }
       keys.erase("lx");
-    }
-    else if (it->first.as<std::string>() == "nx") {
+    } else if (it->first.as<std::string>() == "nx") {
       if (input["nx"].size() != size_t(sim->dim)) {
-        utils::die("Length of nx must equal sim->dim ("
-                   + std::to_string(sim->dim) + ")");
+        utils::die("Length of nx must equal sim->dim (" +
+                   std::to_string(sim->dim) + ")");
       }
       for (std::size_t i = 0; i < size_t(sim->dim); i++) {
         Nx[i] = input["nx"][i].as<int>();
       }
       keys.erase("nx");
-    }
-    else if (it->first.as<std::string>() == "dx") {
+    } else if (it->first.as<std::string>() == "dx") {
       if (input["dx"].size() != size_t(sim->dim)) {
-        utils::die("Length of dx must equal sim->dim ("
-                   + std::to_string(sim->dim) + ")");
+        utils::die("Length of dx must equal sim->dim (" +
+                   std::to_string(sim->dim) + ")");
       }
       for (std::size_t i = 0; i < size_t(sim->dim); i++) {
         dx[i] = input["dx"][i].as<double>();
@@ -56,8 +54,7 @@ Box::Box(YAML::Node input, Sim *_sim) : sim(_sim) {
     for (int i = 0; i < sim->dim; i++) {
       Lx[i] = Nx[i] * dx[i];
     }
-  }
-  else if (remaining_var == "nx") {
+  } else if (remaining_var == "nx") {
     for (int i = 0; i < sim->dim; i++) {
       Nx[i] = int(std::floor(Lx[i] / dx[i]));
       if (Nx[i] % 2 == 0) {
@@ -65,8 +62,7 @@ Box::Box(YAML::Node input, Sim *_sim) : sim(_sim) {
       }
       dx[i] = Lx[i] / Nx[i];
     }
-  }
-  else if (remaining_var == "dx") {
+  } else if (remaining_var == "dx") {
     for (int i = 0; i < sim->dim; i++) {
       dx[i] = Lx[i] / Nx[i];
     }

@@ -7,13 +7,12 @@
 
 #include "sim.hpp"
 #include "sim_types/canonical_sim.hpp"
-#include "yaml-cpp/yaml.h"
 #include "utils.hpp"
+#include "yaml-cpp/yaml.h"
 
 class Sim_Factory {
  public:
   static Sim *New_Sim(YAML::Node input);
 };
 
-
-#endif // SIM_FACTORY_HPP
+#endif  // SIM_FACTORY_HPP

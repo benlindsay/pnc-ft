@@ -11,17 +11,17 @@ void utils::die() {
 
 void utils::die(std::string message) {
 #ifdef MPI
-  if ( RANK == 0 ) {
+  if (RANK == 0) {
     std::cout << message << std::endl;
     std::cout << "Exiting program." << std::endl;
   }
 
-  MPI_Finalize() ;
+  MPI_Finalize();
 #else
   std::cout << message << std::endl;
-    std::cout << "Exiting program." << std::endl;
+  std::cout << "Exiting program." << std::endl;
 #endif
-  exit(1) ;
+  exit(1);
 }
 
 std::string utils::to_lower(std::string str) {
@@ -38,15 +38,13 @@ void utils::to_lower(YAML::Node node) {
   }
   if (node.IsScalar()) {
     node = to_lower(node.as<std::string>());
-  }
-  else if (node.IsMap()) {
+  } else if (node.IsMap()) {
     for (YAML::iterator it = node.begin(); it != node.end(); ++it) {
       to_lower(it->first);
       to_lower(it->second);
     }
-  }
-  else if (node.IsSequence()) {
-    for (std::size_t i=0; i < node.size(); i++) {
+  } else if (node.IsSequence()) {
+    for (std::size_t i = 0; i < node.size(); i++) {
       to_lower(node[i]);
     }
   }

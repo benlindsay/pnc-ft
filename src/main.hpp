@@ -7,9 +7,9 @@
 
 #include <string>
 #include "globals.hpp"
-#include "utils.hpp"
-#include "yaml-cpp/yaml.h"
 #include "sim_plan.hpp"
 #include "sim_plan_factory.hpp"
+#include "utils.hpp"
+#include "yaml-cpp/yaml.h"
 
-#endif // MAIN_HPP
+#endif  // MAIN_HPP

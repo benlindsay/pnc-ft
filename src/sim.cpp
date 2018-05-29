@@ -9,8 +9,7 @@ Sim::Sim(YAML::Node input) {
   // Initialize dim
   if (!input["dim"]) {
     utils::die("dim keyword not found in input file");
-  }
-  else {
+  } else {
     dim = input["dim"].as<int>();
   }
 }

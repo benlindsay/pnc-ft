@@ -55,7 +55,14 @@ clean:
 hardclean: clean
 	$(RM) -r include lib
 
-.PHONY: yaml-cpp clean hardclean
+format: tools/clang-format-all.sh tools/clang-format
+	@echo "Formatting .cpp and .hpp files..."
+	$<
+
+tools/clang-format:
+	tools/install-clang-format.sh
+
+.PHONY: yaml-cpp clean hardclean format
 
 # Test stuff
 test/test_main.o: test/test_main.cpp test/catch.hpp

@@ -1,8 +1,9 @@
 bin/
 build/
+html/
 include/
 lib/
-html/
+tools/clang-format
 *.o
 
 # Ignore Mac specific files

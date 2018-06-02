@@ -20,6 +20,9 @@ if [ -f $CLANG_FORMAT ]; then
   fi
 fi
 
+echo 'Here are the results of $(which clang-format):'
+echo $(which clang-format)
+
 if [ $(which clang-format | grep '3.8.0' | wc -l) -ge 1 ]; then
   cf_path=$(which clang-format)
   cf_dir=$(dirname $cf_path)
@@ -36,13 +39,13 @@ options=(
   "Mac OS X"
   "Fedora23 x86_64 Linux"
   "CentOS 6 x86_64"
-  "x86_64 Ubuntu 16.04 "
+  "x86_64 Ubuntu 14.04"
 )
 urls=(
   "http://releases.llvm.org/3.8.0/clang+llvm-3.8.0-x86_64-apple-darwin.tar.xz"
   "http://releases.llvm.org/3.8.0/clang+llvm-3.8.0-x86_64-fedora23.tar.xz"
   "http://releases.llvm.org/3.8.0/clang+llvm-3.8.0-linux-x86_64-centos6.tar.xz"
-  "http://releases.llvm.org/3.8.0/clang+llvm-3.8.0-x86_64-linux-gnu-ubuntu-16.04.tar.xz"
+  "http://releases.llvm.org/3.8.0/clang+llvm-3.8.0-x86_64-linux-gnu-ubuntu-14.04.tar.xz"
 )
 
 echo "I can't find clang-format version 3.8.0. Let's install it."
@@ -60,6 +63,8 @@ if [ -z $REPLY ]; then
 
       1 ) break ;;
       2 ) break ;;
+      3 ) break ;;
+      4 ) break ;;
       $(( ${#options[@]}+1 )) ) echo "Goodbye!"; break ;;
       *) echo "Invalid option. Try another one."; continue ;;
 

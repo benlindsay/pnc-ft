@@ -11,3 +11,6 @@ tools/clang-format
 
 # Ignore vim ctags file
 .tags
+
+# Ignore VSCode stuff
+.vscode/

@@ -21,9 +21,9 @@ TEST_CASE("Bare bones input", "[input]") {
   REQUIRE(dynamic_cast<Canonical_Sim*>(sim_plan->sim) != NULL);
 
   SECTION("dx calculation") {
-    REQUIRE(sim_plan->sim->boxes[0]->dx[0] == 0.1);
-    REQUIRE(sim_plan->sim->boxes[0]->dx[1] == 0.2);
-    REQUIRE(sim_plan->sim->boxes[0]->dx[2] == 0.3);
+    REQUIRE(sim_plan->sim->dx[0] == 0.1);
+    REQUIRE(sim_plan->sim->dx[1] == 0.2);
+    REQUIRE(sim_plan->sim->dx[2] == 0.3);
   }
 
   const char* yaml_2 =
@@ -41,9 +41,9 @@ TEST_CASE("Bare bones input", "[input]") {
   REQUIRE(dynamic_cast<Canonical_Sim*>(sim_plan->sim) != NULL);
 
   SECTION("Lx calculation") {
-    REQUIRE(sim_plan->sim->boxes[0]->Lx[0] == 1);
-    REQUIRE(sim_plan->sim->boxes[0]->Lx[1] == 2);
-    REQUIRE(sim_plan->sim->boxes[0]->Lx[2] == 3);
+    REQUIRE(sim_plan->sim->Lx[0] == 1);
+    REQUIRE(sim_plan->sim->Lx[1] == 2);
+    REQUIRE(sim_plan->sim->Lx[2] == 3);
   }
 
   const char* yaml_3 =
@@ -61,8 +61,8 @@ TEST_CASE("Bare bones input", "[input]") {
   REQUIRE(dynamic_cast<Canonical_Sim*>(sim_plan->sim) != NULL);
 
   SECTION("Nx calculation") {
-    REQUIRE(sim_plan->sim->boxes[0]->Nx[0] == 9);
-    REQUIRE(sim_plan->sim->boxes[0]->Nx[1] == 11);
-    REQUIRE(sim_plan->sim->boxes[0]->Nx[2] == 11);
+    REQUIRE(sim_plan->sim->Nx[0] == 9);
+    REQUIRE(sim_plan->sim->Nx[1] == 11);
+    REQUIRE(sim_plan->sim->Nx[2] == 11);
   }
 }

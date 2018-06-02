@@ -6,7 +6,6 @@
 
 Canonical_Sim::Canonical_Sim(YAML::Node input) : Sim(input) {
   std::cout << "Initializing Canonical_Sim" << std::endl;
-  boxes.push_back(new Box(input, this));
 }
 
 void Canonical_Sim::run() { std::cout << "Running Canonical_Sim" << std::endl; }

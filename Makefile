@@ -63,7 +63,7 @@ test/test_main.o: test/test_main.cpp test/catch.hpp
 
 bin/test: $(TEST_SRC) $(YAML_FILES)
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) $^ $(INC) -o $@ $(LIB)
+	$(CC) $(CFLAGS) $(TEST_SRC) $(INC) -o $@ $(LIB)
 
 test: bin/test
 	bin/test

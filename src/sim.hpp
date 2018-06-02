@@ -5,8 +5,9 @@
 #ifndef SIM_HPP
 #define SIM_HPP
 
+#include <cmath>
 #include <iostream>
-#include "box.hpp"
+#include "utils.hpp"
 #include "yaml-cpp/yaml.h"
 
 class Box;
@@ -21,13 +22,21 @@ class Sim {
   virtual void write_log_data(void) = 0;
 
   // FFTW_Utils *fftw_utils;
-  std::vector<Box*> boxes;
 
   int dim;
   int iter;
   int max_iter;
-  int grid_freq;
-  int log_freq;
+
+  // Grid/box variables
+  double *Lx;
+  int *Nx;
+  double *dx;
+  double V;
+  int M;
+  int ML;
+
+ private:
+  void init_box_vars(YAML::Node input);
 };
 
 #endif  // SIM_HPP

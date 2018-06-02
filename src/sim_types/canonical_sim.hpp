@@ -7,7 +7,6 @@
 
 #include <iostream>
 #include <vector>
-#include "../box.hpp"
 #include "../sim.hpp"
 #include "yaml-cpp/yaml.h"
 

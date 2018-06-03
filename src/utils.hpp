@@ -5,7 +5,7 @@
 #ifndef UTILS_HPP
 #define UTILS_HPP
 
-#include <algorithm>
+#include <algorithm>  // std::transform
 #include <string>
 #include "globals.hpp"
 #include "yaml-cpp/yaml.h"
@@ -16,6 +16,6 @@ void die(void);
 void die(std::string);
 std::string to_lower(std::string);
 void to_lower(YAML::Node);
-}
+}  // namespace utils
 
 #endif  // UTILS_HPP

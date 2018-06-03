@@ -53,7 +53,7 @@ clean:
 	$(RM) -r $(BUILDDIR) bin test/*.o
 
 hardclean: clean
-	$(RM) -r include lib
+	$(RM) -r include/gmock include/gtest include/yaml-cpp lib
 
 format: tools/clang-format-all.sh tools/clang-format
 	@echo "Formatting .cpp and .hpp files..."

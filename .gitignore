@@ -1,7 +1,9 @@
 bin/
 build/
 html/
-include/
+include/gmock/
+include/gtest/
+include/yaml-cpp/
 lib/
 tools/clang-format
 *.o
@@ -14,3 +16,4 @@ tools/clang-format
 
 # Ignore VSCode stuff
 .vscode/
+Makefile

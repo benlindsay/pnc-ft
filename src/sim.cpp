@@ -17,17 +17,13 @@ Sim::Sim(YAML::Node input) {
   init_box_vars(input);
 }
 
-Sim::~Sim() {
-  delete Lx;
-  delete Nx;
-  delete dx;
-}
+Sim::~Sim() {}
 
 void Sim::init_box_vars(YAML::Node input) {
   // Initialize Lx, Nx, and dx
-  Lx = new double[dim];
-  Nx = new int[dim];
-  dx = new double[dim];
+  Lx = ArrayXd(dim);
+  Nx = ArrayXi(dim);
+  dx = ArrayXd(dim);
 
   // 2 of the 3 must be input, and we can calculate the 3rd from the other 2.
   // To figure out which 2 were input, we'll start with the set of those 3 and
@@ -67,28 +63,25 @@ void Sim::init_box_vars(YAML::Node input) {
   // Calculate the 3rd variable (Lx, Nx, or dx)
   std::string remaining_var = *(keys.begin());
   if (remaining_var == "lx") {
-    for (int i = 0; i < dim; i++) {
-      Lx[i] = Nx[i] * dx[i];
-    }
+    Lx = Nx.cast<double>() * dx;
   } else if (remaining_var == "nx") {
+    // Calculate Nx rounded to nearest odd int (Odd values work better with
+    // FFTW)
+    // First, truncate Lx/dx
+    Nx = (Lx / dx).cast<int>();
+    // Next, add one to any even value in Nx.
     for (int i = 0; i < dim; i++) {
-      Nx[i] = int(std::floor(Lx[i] / dx[i]));
       if (Nx[i] % 2 == 0) {
         Nx[i] += 1;
       }
-      dx[i] = Lx[i] / Nx[i];
     }
+    // Recalculate dx with the same Lx and the calculated Nx
+    dx = Lx / Nx.cast<double>();
   } else if (remaining_var == "dx") {
-    for (int i = 0; i < dim; i++) {
-      dx[i] = Lx[i] / Nx[i];
-    }
+    dx = Lx / Nx.cast<double>();
   }
 
   // Assign V and M
-  V = 1.0;
-  M = 1;
-  for (int i = 0; i < dim; i++) {
-    V *= Lx[i];
-    M *= Nx[i];
-  }
+  V = Lx.prod();
+  M = Nx.prod();
 }

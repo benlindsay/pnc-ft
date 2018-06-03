@@ -7,8 +7,13 @@
 
 #include <cmath>
 #include <iostream>
+#include <valarray>
+#include "Eigen/Dense"
 #include "utils.hpp"
 #include "yaml-cpp/yaml.h"
+
+using Eigen::ArrayXd;  // Dynamically sized double Array
+using Eigen::ArrayXi;  // Dynamically sized int Array
 
 class Box;
 // class FFTW_Utils;
@@ -28,9 +33,9 @@ class Sim {
   int max_iter;
 
   // Grid/box variables
-  double *Lx;
-  int *Nx;
-  double *dx;
+  ArrayXd Lx;
+  ArrayXi Nx;
+  ArrayXd dx;
   double V;
   int M;
   int ML;

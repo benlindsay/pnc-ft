@@ -13,7 +13,6 @@ Sim::Sim(YAML::Node input) {
     dim = input["dim"].as<int>();
   }
 
-  // Initialize
   init_box_vars(input);
 }
 
@@ -84,4 +83,12 @@ void Sim::init_box_vars(YAML::Node input) {
   // Assign V and M
   V = Lx.prod();
   M = Nx.prod();
+}
+
+void Sim::write_outputs(void) {
+  for (size_t i = 0; i < output_list.size(); i++) {
+    if (output_list[i]->is_time_to_write()) {
+      output_list[i]->write();
+    }
+  }
 }

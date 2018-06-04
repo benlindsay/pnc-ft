@@ -5,18 +5,16 @@
 #ifndef CANONICAL_SIM_HPP
 #define CANONICAL_SIM_HPP
 
-#include <iostream>
-#include <vector>
 #include "../sim.hpp"
-#include "yaml-cpp/yaml.h"
 
 class Canonical_Sim : public Sim {
  public:
   Canonical_Sim(YAML::Node input);
-  virtual ~Canonical_Sim(){};
+  virtual ~Canonical_Sim();
   virtual void run(void);
-  virtual void write_grid_data(void);
-  virtual void write_log_data(void);
+  virtual std::string get_var_as_string(std::string var_name, int str_len);
+  virtual void init_default_summary_var_list();
+  virtual void init_output_list(YAML::Node input);
 };
 
 #endif  // CANONICAL_SIM_HPP

@@ -8,6 +8,7 @@ Canonical_Sim::Canonical_Sim(YAML::Node input) : Sim(input) {
   std::cout << "Initializing Canonical_Sim" << std::endl;
   init_default_summary_var_list();
   init_output_list(input);
+  write_iter_0_outputs();
 }
 
 Canonical_Sim::~Canonical_Sim() {
@@ -16,13 +17,20 @@ Canonical_Sim::~Canonical_Sim() {
   }
 }
 
-void Canonical_Sim::run() { std::cout << "Running Canonical_Sim" << std::endl; }
+void Canonical_Sim::run() {
+  std::cout << "Running Canonical_Sim" << std::endl;
+  for (iter = 1; iter <= max_iter; iter++) {
+    write_outputs();
+  }
+}
 
 std::string Canonical_Sim::get_var_as_string(std::string var_name,
                                              int str_len) {
   std::string var_name_lower = utils::to_lower(var_name);
+  std::ostringstream os;
   if (var_name_lower == "iter") {
-    return " iter=1000";
+    os << std::setw(str_len - 1) << iter;
+    return " " + os.str();
   } else if (var_name_lower == "h") {
     return " H=1234567";
   } else if (var_name_lower == "err") {

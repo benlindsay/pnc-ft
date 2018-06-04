@@ -12,6 +12,7 @@ Output* Output_Factory::New_Output(Sim* sim, std::string output_type,
     int print_freq = Output::default_print_freq;
     std::string file_name = Summary_Output::default_file_name;
     int column_width = Output::default_column_width;
+    bool write_header = true;
     for (YAML::const_iterator it = output_type_params.begin();
          it != output_type_params.end(); ++it) {
       std::string key = it->first.as<std::string>();
@@ -24,13 +25,15 @@ Output* Output_Factory::New_Output(Sim* sim, std::string output_type,
         file_name = value.as<std::string>();
       } else if (key == "column_width") {
         column_width = value.as<int>();
+      } else if (key == "write_header") {
+        write_header = value.as<bool>();
       } else {
         utils::die("Can't recognize summary output parameter '" +
                    value.as<std::string>() + "'");
       }
     }
     return new Summary_Output(sim, var_list, print_freq, file_name,
-                              column_width);
+                              column_width, write_header);
   } else {
     utils::die("Can't recognize output type '" + output_type + "'!");
     return NULL;

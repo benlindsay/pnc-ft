@@ -32,6 +32,7 @@ class Sim {
   virtual std::string get_var_as_string(std::string var_name, int str_len) = 0;
   virtual void init_output_list(YAML::Node input) = 0;
   virtual void init_default_summary_var_list() = 0;
+  void write_iter_0_outputs(void);
   void write_outputs(void);
 
   // FFTW_Utils *fftw_utils;

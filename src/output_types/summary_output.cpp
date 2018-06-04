@@ -6,9 +6,9 @@
 
 Summary_Output::Summary_Output(Sim *sim, std::vector<std::string> var_list,
                                int print_freq, std::string file_name,
-                               int column_width)
+                               int column_width, bool write_header)
     : Output(sim) {
-  init(sim, var_list, print_freq, file_name, column_width);
+  init(sim, var_list, print_freq, file_name, column_width, write_header);
 }
 
 Summary_Output::Summary_Output(Sim *sim, std::vector<std::string> var_list)
@@ -18,12 +18,13 @@ Summary_Output::Summary_Output(Sim *sim, std::vector<std::string> var_list)
 
 void Summary_Output::init(Sim *_sim, std::vector<std::string> _var_list,
                           int _print_freq, std::string _file_name,
-                          int _column_width) {
+                          int _column_width, bool _write_header) {
   sim = _sim;
   var_list = _var_list;
   print_freq = _print_freq;
   file_name = _file_name;
   column_width = _column_width;
+  write_header = _write_header;
 
   file.open(file_name);
 }
@@ -32,8 +33,9 @@ void Summary_Output::init(Sim *sim, std::vector<std::string> var_list) {
   int print_freq = Output::default_column_width;
   std::string file_name = Summary_Output::default_file_name;
   int column_width = Output::default_column_width;
+  bool write_header = true;
 
-  init(sim, var_list, print_freq, file_name, column_width);
+  init(sim, var_list, print_freq, file_name, column_width, write_header);
 }
 
 Summary_Output::~Summary_Output(void) { file.close(); }
@@ -46,6 +48,16 @@ bool Summary_Output::is_time_to_write(void) {
   } else {
     return false;
   }
+}
+
+void Summary_Output::write_iter_0(void) {
+  if (write_header) {
+    for (size_t i = 0; i < var_list.size(); i++) {
+      file << " " << std::setw(column_width - 1) << var_list[i];
+    }
+    file << "\n";
+  }
+  write();
 }
 
 void Summary_Output::write(void) {

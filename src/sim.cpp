@@ -13,6 +13,16 @@ Sim::Sim(YAML::Node input) {
     dim = input["dim"].as<int>();
   }
 
+  iter = 0;
+
+  // Initialize max_iter
+  if (!input["max_iter"]) {
+    max_iter = 100;
+  } else {
+    max_iter = input["max_iter"].as<int>();
+  }
+
+  // Initialize box/grid variables
   init_box_vars(input);
 }
 
@@ -83,6 +93,14 @@ void Sim::init_box_vars(YAML::Node input) {
   // Assign V and M
   V = Lx.prod();
   M = Nx.prod();
+}
+
+void Sim::write_iter_0_outputs(void) {
+  for (size_t i = 0; i < output_list.size(); i++) {
+    if (output_list[i]->is_time_to_write()) {
+      output_list[i]->write_iter_0();
+    }
+  }
 }
 
 void Sim::write_outputs(void) {

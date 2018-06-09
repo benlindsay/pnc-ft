@@ -23,7 +23,7 @@ fi
 echo 'Here are the results of $(which clang-format):'
 echo $(which clang-format)
 
-if [ $(which clang-format | grep '3.8.0' | wc -l) -ge 1 ]; then
+if [ $(clang-format --version | grep '3.8.0' | wc -l) -ge 1 ]; then
   cf_path=$(which clang-format)
   cf_dir=$(dirname $cf_path)
   echo "You already have clang-format 3.8.0 installed in $cf_dir."

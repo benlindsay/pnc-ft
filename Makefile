@@ -50,7 +50,7 @@ $(YAML_FILES):
 
 clean:
 	@echo " Cleaning...";
-	$(RM) -r $(BUILDDIR) bin test/*.o
+	$(RM) -r $(BUILDDIR)/* bin/* test/*.o
 
 hardclean: clean
 	$(RM) -r include/gmock include/gtest include/yaml-cpp lib

@@ -8,6 +8,9 @@ lib/
 tools/clang-format
 *.o
 
+# Ignore output files
+/*.dat
+
 # Ignore Mac specific files
 .DS_Store
 
@@ -16,4 +19,3 @@ tools/clang-format
 
 # Ignore VSCode stuff
 .vscode/
-Makefile

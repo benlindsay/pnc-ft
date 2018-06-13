@@ -6,9 +6,9 @@
 #define UTILS_HPP
 
 #include <algorithm>  // std::transform
-#include <fstream>  // std::ofstream
-#include <iostream>  // std::cout, std::endl
-#include <string>  // std::string
+#include <fstream>    // std::ofstream
+#include <iostream>   // std::cout, std::endl
+#include <string>     // std::string
 #include "globals.hpp"
 #include "yaml-cpp/yaml.h"
 

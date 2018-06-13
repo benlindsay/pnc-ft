@@ -5,8 +5,8 @@
 #ifndef MAIN_HPP
 #define MAIN_HPP
 
-#include <string>  // std::string
 #include <sstream>  // std::stringstream
+#include <string>   // std::string
 #include "globals.hpp"
 #include "sim_plan.hpp"
 #include "sim_plan_factory.hpp"

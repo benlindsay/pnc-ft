@@ -22,7 +22,7 @@ void utils::die(std::string message) {
 
 void utils::die(std::stringstream& message) { utils::die(message.str()); }
 
-void utils::mpi_init_wrapper(int argc, const char *argv[]) {
+void utils::mpi_init_wrapper(int argc, const char* argv[]) {
 #ifdef MPI
   MPI_Init(&argc, &argv);
   MPI_Comm_rank(MPI_COMM_WORLD, &RANK);

@@ -6,7 +6,6 @@
 #define GLOBALS_HPP
 
 #include <complex>
-#include <iostream>
 
 #ifdef MAIN_HPP
 int RANK = 0;

@@ -5,6 +5,7 @@ include/gmock/
 include/gtest/
 include/yaml-cpp/
 lib/
+tmp/
 tools/clang-format
 *.o
 

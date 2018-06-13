@@ -5,16 +5,8 @@
 #include "main.hpp"
 
 int main(int argc, const char *argv[]) {
-#ifdef MPI
-  // MPI initialization stuff
-  MPI_Init(&argc, &argv);
-  MPI_Comm_rank(MPI_COMM_WORLD, &RANK);
-  MPI_Comm_size(MPI_COMM_WORLD, &NPROCS);
-  fftw_mpi_init();
-#else
-  RANK = 0;
-  NPROCS = 1;
-#endif
+  // Initialize RANK and NPROCS globals if MPI is defined
+  utils::mpi_init_wrapper(argc, argv);
 
   std::string input_file_path;
   std::stringstream ss;
@@ -42,9 +34,5 @@ int main(int argc, const char *argv[]) {
 
   delete sim_plan;
 
-#ifdef MPI
-  MPI_Finalize();
-#endif
-
-  return 0;
+  utils::mpi_finalize_wrapper();
 }

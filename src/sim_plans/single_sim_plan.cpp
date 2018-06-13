@@ -5,10 +5,10 @@
 #include "single_sim_plan.hpp"
 
 Single_Sim_Plan::Single_Sim_Plan(YAML::Node input) : Sim_Plan(input) {
-  std::cout << "Initializing Single_Sim_Plan" << std::endl;
+  utils::print_one_line("Initializing Single_Sim_Plan");
 }
 
 void Single_Sim_Plan::run() {
-  std::cout << "Running Single_Sim_Pan" << std::endl;
+  utils::print_one_line("Running Single_Sim_Pan");
   sim->run();
 }

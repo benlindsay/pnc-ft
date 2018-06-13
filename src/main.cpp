@@ -17,15 +17,15 @@ int main(int argc, const char *argv[]) {
 #endif
 
   std::string input_file_path;
+  std::stringstream ss;
   if (argc < 2) {
     // If input file wasn't passed as command line argument,
     // print usage string and exit program
-    std::cout << "Usage: " << std::string(argv[0]) << " input_file_path"
-              << std::endl;
-    utils::die();
+    ss << "Usage: " << argv[0] << " input_file_path";
+    utils::die(ss);
   } else {
     input_file_path = argv[1];
-    std::cout << "Input file = " << input_file_path << std::endl;
+    utils::print_one_line("Input file = " + input_file_path);
   }
 
   // Read input file and check validity of inputs.

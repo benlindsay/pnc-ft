@@ -10,19 +10,17 @@ void utils::die() {
 }
 
 void utils::die(std::string message) {
-#ifdef MPI
-  if (RANK == 0) {
-    std::cout << message << std::endl;
-    std::cout << "Exiting program." << std::endl;
-  }
+  utils::print_one_line(message);
+  utils::print_one_line("Exiting program.");
 
+#ifdef MPI
   MPI_Finalize();
-#else
-  std::cout << message << std::endl;
-  std::cout << "Exiting program." << std::endl;
 #endif
+
   exit(1);
 }
+
+void utils::die(std::stringstream& message) { utils::die(message.str()); }
 
 std::string utils::to_lower(std::string str) {
   // transform is from algorithm library
@@ -48,4 +46,29 @@ void utils::to_lower(YAML::Node node) {
       to_lower(node[i]);
     }
   }
+}
+
+void utils::print_one_line(std::string line) {
+  if (RANK == 0) {
+    std::cout << line << std::endl;
+  }
+}
+
+void utils::print_one_line(const char* line) {
+  std::string line_str = line;
+  utils::print_one_line(line_str);
+}
+
+void utils::print_one_line(std::stringstream& line) {
+  utils::print_one_line(line.str());
+}
+
+void utils::print_one_line(std::ofstream& file, std::string line) {
+  if (RANK == 0) {
+    file << line << std::endl;
+  }
+}
+
+void utils::print_one_line(std::ofstream& file, std::stringstream& line) {
+  utils::print_one_line(file, line.str());
 }

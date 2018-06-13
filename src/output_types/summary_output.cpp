@@ -52,18 +52,19 @@ bool Summary_Output::is_time_to_write(void) {
 
 void Summary_Output::write_iter_0(void) {
   if (write_header) {
+    std::stringstream ss;
     for (size_t i = 0; i < var_list.size(); i++) {
-      file << " " << std::setw(column_width - 1) << var_list[i];
+      ss << " " << std::setw(column_width - 1) << var_list[i];
     }
-    file << "\n";
+    utils::print_one_line(file, ss);
   }
   write();
 }
 
 void Summary_Output::write(void) {
-  std::string output_line;
+  std::stringstream ss;
   for (size_t i = 0; i < var_list.size(); i++) {
-    file << sim->get_var_as_string(var_list[i], column_width);
+    ss << sim->get_var_as_string(var_list[i], column_width);
   }
-  file << "\n";
+  utils::print_one_line(file, ss);
 }

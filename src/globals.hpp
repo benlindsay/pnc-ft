@@ -6,13 +6,18 @@
 #define GLOBALS_HPP
 
 #include <complex>
-#include <iostream>
 
-#ifndef MAIN_HPP
-extern
+#ifdef MAIN_HPP
+int RANK = 0;
+#else
+extern int RANK;
 #endif
-    int RANK,
-    NPROCS;
+
+#ifdef MAIN_HPP
+int NPROCS = 1;
+#else
+extern int NPROCS;
+#endif
 
 #ifdef MAIN_HPP
 std::complex<double> I(0.0, 1.0);

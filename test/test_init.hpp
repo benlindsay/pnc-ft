@@ -6,13 +6,6 @@
 #define TEST_INIT_HPP
 
 #include <iostream>
-
-#include <iomanip>
-#include <iostream>
-#include "../src/sim.hpp"
-#include "../src/sim_factory.hpp"
-#include "../src/sim_plan.hpp"
-#include "../src/sim_plan_factory.hpp"
-#include "yaml-cpp/yaml.h"
+#include "../src/main.hpp"
 
 #endif  // TEST_INIT_HPP

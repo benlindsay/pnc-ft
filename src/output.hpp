@@ -9,6 +9,7 @@
 #include <iomanip>   // std::setw, std::setprecision
 #include <iostream>  // std::cout, std::endl
 #include "sim.hpp"
+#include "utils.hpp"
 
 class Sim;
 

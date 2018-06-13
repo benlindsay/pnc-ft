@@ -5,11 +5,8 @@
 #ifndef SIM_HPP
 #define SIM_HPP
 
-#include <cmath>
-#include <iostream>
-#include <string>
-#include <valarray>
-#include <vector>
+#include <string>  // std::string
+#include <vector>  // std::vector
 #include "Eigen/Dense"
 #include "yaml-cpp/yaml.h"
 

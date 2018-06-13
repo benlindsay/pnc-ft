@@ -5,7 +5,7 @@
 #include "sim.hpp"
 
 Sim::Sim(YAML::Node input) {
-  std::cout << "Initializing Sim" << std::endl;
+  utils::print_one_line("Initializing Sim");
   // Initialize dim
   if (!input["dim"]) {
     utils::die("dim keyword not found in input file");

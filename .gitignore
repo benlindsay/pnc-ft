@@ -5,10 +5,15 @@ include/gmock/
 include/gtest/
 include/yaml-cpp/
 lib/
+tmp/
 tools/clang-format
 *.o
 
+<<<<<<< HEAD
 # Ignore output files
+=======
+# Ignore simulation outputs
+>>>>>>> dev
 /*.dat
 
 # Ignore Mac specific files

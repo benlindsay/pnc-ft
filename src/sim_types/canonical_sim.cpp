@@ -5,7 +5,7 @@
 #include "canonical_sim.hpp"
 
 Canonical_Sim::Canonical_Sim(YAML::Node input) : Sim(input) {
-  std::cout << "Initializing Canonical_Sim" << std::endl;
+  utils::print_one_line("Initializing Canonical_Sim");
   init_default_summary_var_list();
   init_output_list(input);
   write_iter_0_outputs();
@@ -18,7 +18,7 @@ Canonical_Sim::~Canonical_Sim() {
 }
 
 void Canonical_Sim::run() {
-  std::cout << "Running Canonical_Sim" << std::endl;
+  utils::print_one_line("Running Canonical_Sim");
   for (iter = 1; iter <= max_iter; iter++) {
     write_outputs();
   }

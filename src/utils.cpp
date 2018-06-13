@@ -10,18 +10,55 @@ void utils::die() {
 }
 
 void utils::die(std::string message) {
-#ifdef MPI
-  if (RANK == 0) {
-    std::cout << message << std::endl;
-    std::cout << "Exiting program." << std::endl;
-  }
+  utils::print_one_line(message);
+  utils::print_one_line("Exiting program.");
 
+#ifdef MPI
   MPI_Finalize();
-#else
-  std::cout << message << std::endl;
-  std::cout << "Exiting program." << std::endl;
 #endif
+
   exit(1);
+}
+
+void utils::die(std::stringstream& message) { utils::die(message.str()); }
+
+void utils::mpi_init_wrapper(int argc, const char* argv[]) {
+#ifdef MPI
+  MPI_Init(&argc, &argv);
+  MPI_Comm_rank(MPI_COMM_WORLD, &RANK);
+  MPI_Comm_size(MPI_COMM_WORLD, &NPROCS);
+#endif
+}
+
+void utils::mpi_finalize_wrapper() {
+#ifdef MPI
+  MPI_Finalize();
+#endif
+}
+
+void utils::print_one_line(std::string line) {
+  if (RANK == 0) {
+    std::cout << line << std::endl;
+  }
+}
+
+void utils::print_one_line(const char* line) {
+  std::string line_str = line;
+  utils::print_one_line(line_str);
+}
+
+void utils::print_one_line(std::stringstream& line) {
+  utils::print_one_line(line.str());
+}
+
+void utils::print_one_line(std::ofstream& file, std::string line) {
+  if (RANK == 0) {
+    file << line << std::endl;
+  }
+}
+
+void utils::print_one_line(std::ofstream& file, std::stringstream& line) {
+  utils::print_one_line(file, line.str());
 }
 
 std::string utils::to_lower(std::string str) {

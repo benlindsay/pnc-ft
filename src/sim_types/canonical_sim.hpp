@@ -11,10 +11,10 @@ class Canonical_Sim : public Sim {
  public:
   Canonical_Sim(YAML::Node input);
   virtual ~Canonical_Sim();
-  virtual void run(void);
   virtual std::string get_var_as_string(std::string var_name, int str_len);
   virtual void init_default_summary_var_list();
   virtual void init_output_list(YAML::Node input);
+  virtual void run(void);
 };
 
 #endif  // CANONICAL_SIM_HPP

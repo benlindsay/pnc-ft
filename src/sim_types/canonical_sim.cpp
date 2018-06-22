@@ -17,13 +17,6 @@ Canonical_Sim::~Canonical_Sim() {
   }
 }
 
-void Canonical_Sim::run() {
-  utils::print_one_line("Running Canonical_Sim");
-  for (iter = 1; iter <= max_iter; iter++) {
-    write_outputs();
-  }
-}
-
 std::string Canonical_Sim::get_var_as_string(std::string var_name,
                                              int str_len) {
   std::string var_name_lower = utils::to_lower(var_name);
@@ -64,5 +57,12 @@ void Canonical_Sim::init_output_list(YAML::Node input) {
           Output_Factory::New_Output(this, output_type, output_type_params);
       output_list.push_back(output);
     }
+  }
+}
+
+void Canonical_Sim::run() {
+  utils::print_one_line("Running Canonical_Sim");
+  for (iter = 1; iter <= max_iter; iter++) {
+    write_outputs();
   }
 }

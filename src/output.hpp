@@ -17,9 +17,9 @@ class Output {
  public:
   Output(Sim *sim) : sim(sim){};
   virtual ~Output(){};
-  virtual void write_iter_0(void) = 0;
-  virtual void write(void) = 0;
   virtual bool is_time_to_write(void) = 0;
+  virtual void write(void) = 0;
+  virtual void write_iter_0(void) = 0;
   static const int default_column_width = 10;
   static const int default_print_freq = 50;
 

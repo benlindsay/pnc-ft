@@ -25,10 +25,10 @@ class Sim {
  public:
   Sim(YAML::Node input);
   virtual ~Sim();
-  virtual void run(void) = 0;
   virtual std::string get_var_as_string(std::string var_name, int str_len) = 0;
   virtual void init_output_list(YAML::Node input) = 0;
   virtual void init_default_summary_var_list() = 0;
+  virtual void run(void) = 0;
   void write_iter_0_outputs(void);
   void write_outputs(void);
 

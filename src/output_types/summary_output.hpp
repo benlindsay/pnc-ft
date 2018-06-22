@@ -15,21 +15,21 @@ class Summary_Output : public Output {
                  std::string file_name, int column_width, bool write_header);
   Summary_Output(Sim *sim, std::vector<std::string> var_list);
   virtual ~Summary_Output();
-  virtual void write_iter_0(void);
-  virtual void write(void);
   virtual bool is_time_to_write(void);
+  virtual void write(void);
+  virtual void write_iter_0(void);
   static const std::string default_file_name;
 
  private:
+  void init(Sim *sim, std::vector<std::string> var_list, int print_freq,
+            std::string file_name, int column_width, bool write_header);
+  void init(Sim *sim, std::vector<std::string> var_list);
   int print_freq;
   int column_width;
   bool write_header;
   std::vector<std::string> var_list;
   std::string file_name;
   std::ofstream file;
-  void init(Sim *sim, std::vector<std::string> var_list, int print_freq,
-            std::string file_name, int column_width, bool write_header);
-  void init(Sim *sim, std::vector<std::string> var_list);
 };
 
 #endif  // SUMMARY_OUTPUT_HPP

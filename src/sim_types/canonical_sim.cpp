@@ -28,13 +28,15 @@ std::string Canonical_Sim::get_var_as_string(std::string var_name,
   // characters go to exponent, i.e. "e+00", string length - 7 gives the number
   // of digits we can put after the decimal
   int scientific_precision = str_len - 7;
+  // Set number of digits after decimal point in scientific notation
   os.precision(scientific_precision);
+  // Set minimum width of output string (left-padded with spaces)
   os << std::setw(str_len - 1);
+  // Add scientific notation flag to force specified number of digits after
+  // decimal point
   os << std::scientific;
   if (var_name_lower == "iter") {
-    os << std::defaultfloat;
     os << iter;
-    os << std::scientific;
   } else if (var_name_lower == "h_real") {
     os << hamiltonian.real();
   } else if (var_name_lower == "h_imag") {

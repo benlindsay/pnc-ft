@@ -15,6 +15,14 @@ class Canonical_Sim : public Sim {
   virtual void init_default_summary_var_list();
   virtual void init_output_list(YAML::Node input);
   virtual void run(void);
+
+ private:
+  std::complex<double> calc_hamiltonian();
+  void update_hamiltonian();
+  std::complex<double> hamiltonian;
+  std::complex<double> hamiltonian_prev;
+  double hamiltonian_err;
+  int last_hamiltonian_iter;
 };
 
 #endif  // CANONICAL_SIM_HPP

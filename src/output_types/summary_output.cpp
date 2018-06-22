@@ -30,7 +30,7 @@ void Summary_Output::init(Sim *_sim, std::vector<std::string> _var_list,
 }
 
 void Summary_Output::init(Sim *sim, std::vector<std::string> var_list) {
-  int print_freq = Output::default_column_width;
+  int print_freq = Output::default_print_freq;
   std::string file_name = Summary_Output::default_file_name;
   int column_width = Output::default_column_width;
   bool write_header = true;

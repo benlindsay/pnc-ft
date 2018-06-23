@@ -14,7 +14,7 @@
 class Sim_Plan {
  public:
   Sim_Plan(YAML::Node input){};
-  virtual ~Sim_Plan() {};
+  virtual ~Sim_Plan(){};
   virtual void run(void) = 0;
 };
 

@@ -24,7 +24,6 @@ TEST_CASE("Bare bones input", "[input]") {
   REQUIRE(dynamic_cast<Canonical_Sim*>(single_sim_plan->sim) != NULL);
   sim = dynamic_cast<Canonical_Sim*>(single_sim_plan->sim);
 
-
   SECTION("dx calculation") {
     REQUIRE(sim->dx[0] == 0.1);
     REQUIRE(sim->dx[1] == 0.2);

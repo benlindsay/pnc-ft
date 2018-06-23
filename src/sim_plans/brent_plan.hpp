@@ -14,8 +14,9 @@
 class Brent_Plan : public Sim_Plan {
  public:
   Brent_Plan(YAML::Node input);
-  virtual ~Brent_Plan(){};
+  virtual ~Brent_Plan() { delete sim; };
   virtual void run(void);
+  Sim *sim;
 };
 
 #endif  // BRENT_PLAN_HPP

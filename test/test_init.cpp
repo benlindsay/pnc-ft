@@ -16,14 +16,19 @@ TEST_CASE("Bare bones input", "[input]") {
   std::cout.setstate(std::ios_base::failbit);
   Sim_Plan* sim_plan = Sim_Plan_Factory::New_Sim_Plan(input);
   std::cout.clear();
+  Single_Sim_Plan* single_sim_plan;
+  Canonical_Sim* sim;
 
   REQUIRE(dynamic_cast<Single_Sim_Plan*>(sim_plan) != NULL);
-  REQUIRE(dynamic_cast<Canonical_Sim*>(sim_plan->sim) != NULL);
+  single_sim_plan = dynamic_cast<Single_Sim_Plan*>(sim_plan);
+  REQUIRE(dynamic_cast<Canonical_Sim*>(single_sim_plan->sim) != NULL);
+  sim = dynamic_cast<Canonical_Sim*>(single_sim_plan->sim);
+
 
   SECTION("dx calculation") {
-    REQUIRE(sim_plan->sim->dx[0] == 0.1);
-    REQUIRE(sim_plan->sim->dx[1] == 0.2);
-    REQUIRE(sim_plan->sim->dx[2] == 0.3);
+    REQUIRE(sim->dx[0] == 0.1);
+    REQUIRE(sim->dx[1] == 0.2);
+    REQUIRE(sim->dx[2] == 0.3);
   }
 
   const char* yaml_2 =
@@ -38,12 +43,14 @@ TEST_CASE("Bare bones input", "[input]") {
   std::cout.clear();
 
   REQUIRE(dynamic_cast<Single_Sim_Plan*>(sim_plan) != NULL);
-  REQUIRE(dynamic_cast<Canonical_Sim*>(sim_plan->sim) != NULL);
+  single_sim_plan = dynamic_cast<Single_Sim_Plan*>(sim_plan);
+  REQUIRE(dynamic_cast<Canonical_Sim*>(single_sim_plan->sim) != NULL);
+  sim = dynamic_cast<Canonical_Sim*>(single_sim_plan->sim);
 
   SECTION("Lx calculation") {
-    REQUIRE(sim_plan->sim->Lx[0] == 1);
-    REQUIRE(sim_plan->sim->Lx[1] == 2);
-    REQUIRE(sim_plan->sim->Lx[2] == 3);
+    REQUIRE(sim->Lx[0] == 1);
+    REQUIRE(sim->Lx[1] == 2);
+    REQUIRE(sim->Lx[2] == 3);
   }
 
   const char* yaml_3 =
@@ -58,11 +65,13 @@ TEST_CASE("Bare bones input", "[input]") {
   std::cout.clear();
 
   REQUIRE(dynamic_cast<Single_Sim_Plan*>(sim_plan) != NULL);
-  REQUIRE(dynamic_cast<Canonical_Sim*>(sim_plan->sim) != NULL);
+  single_sim_plan = dynamic_cast<Single_Sim_Plan*>(sim_plan);
+  REQUIRE(dynamic_cast<Canonical_Sim*>(single_sim_plan->sim) != NULL);
+  sim = dynamic_cast<Canonical_Sim*>(single_sim_plan->sim);
 
   SECTION("Nx calculation") {
-    REQUIRE(sim_plan->sim->Nx[0] == 9);
-    REQUIRE(sim_plan->sim->Nx[1] == 11);
-    REQUIRE(sim_plan->sim->Nx[2] == 11);
+    REQUIRE(sim->Nx[0] == 9);
+    REQUIRE(sim->Nx[1] == 11);
+    REQUIRE(sim->Nx[2] == 11);
   }
 }

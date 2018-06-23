@@ -15,8 +15,9 @@ class Sim_Plan;
 class Single_Sim_Plan : public Sim_Plan {
  public:
   Single_Sim_Plan(YAML::Node input);
-  virtual ~Single_Sim_Plan(){};
+  virtual ~Single_Sim_Plan() { delete sim; };
   virtual void run(void);
+  Sim *sim;
 };
 
 #endif  // SINGLE_SIM_PLAN_HPP

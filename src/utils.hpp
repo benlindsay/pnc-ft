@@ -33,6 +33,7 @@ void print_one_line(const char*);
 void print_one_line(std::stringstream&);
 void print_one_line(std::ofstream&, std::string);
 void print_one_line(std::ofstream&, std::stringstream&);
+char* strdup(const char* s);
 std::string to_lower(std::string);
 void to_lower(YAML::Node);
 }  // namespace utils

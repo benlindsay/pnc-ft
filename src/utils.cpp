@@ -92,12 +92,12 @@ void utils::print_one_line(std::ofstream& file, std::stringstream& line) {
 
 char* utils::strdup(const char* s) {
   // https://stackoverflow.com/a/40766163/2680824
-  size_t slen = strlen(s);
+  size_t slen = std::strlen(s);
   char* result = (char*)malloc(slen + 1);
   if (result == NULL) {
     return NULL;
   }
-  memcpy(result, s, slen + 1);
+  std::memcpy(result, s, slen + 1);
   return result;
 }
 

@@ -24,7 +24,7 @@ YAML_FILES := $(YAML_CPP_INSTALL_PREFIX)/lib/libyaml-cpp.a \
               $(YAML_CPP_INSTALL_PREFIX)/include/yaml-cpp/yaml.h
 
 # sources for tests
-TEST_SRC := test/test_main.o test/test_init.cpp
+TEST_SRC := test/test_main.o $(filter-out test/test_main.cpp, $(shell find test -name *.cpp))
 TEST_SRC += $(filter-out src/main.cpp, $(SOURCES))
 
 $(TARGET): $(YAML_FILES) $(OBJECTS)
@@ -50,10 +50,10 @@ $(YAML_FILES):
 
 clean:
 	@echo " Cleaning...";
-	$(RM) -r $(BUILDDIR)/* bin/* test/*.o
+	$(RM) -r $(BUILDDIR)/* bin/*
 
 hardclean: clean
-	$(RM) -r include/gmock include/gtest include/yaml-cpp lib
+	$(RM) -r include/gmock include/gtest include/yaml-cpp lib test/*.o
 
 format: tools/clang-format-all.sh tools/clang-format
 	@echo "Formatting .cpp and .hpp files..."

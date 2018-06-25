@@ -15,13 +15,7 @@ SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
 OBJECTS := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
 
 # yaml-cpp install variables
-PWD := $(shell pwd)
-YAML_CPP := /tmp/yaml-cpp
-YAML_CPP_INSTALL_PREFIX := $(PWD)
-CMAKE_CC := $(shell which gcc)
-CMAKE_CXX := $(shell which g++)
-YAML_FILES := $(YAML_CPP_INSTALL_PREFIX)/lib/libyaml-cpp.a \
-              $(YAML_CPP_INSTALL_PREFIX)/include/yaml-cpp/yaml.h
+YAML_FILES := lib/libyaml-cpp.a include/yaml-cpp/yaml.h
 
 # boost install variables
 BOOST_FILES := lib/libboost_filesystem.a lib/libboost_system.a
@@ -42,15 +36,7 @@ $(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
 # Install yaml-cpp files in include/ and lib/ under YAML_CPP_INSTALL_PREFIX,
 # which is this project's root directory by default
 $(YAML_FILES):
-	rm -rf $(YAML_CPP)
-	git clone https://github.com/jbeder/yaml-cpp $(YAML_CPP) && \
-	    mkdir $(YAML_CPP)/build && \
-	    cd $(YAML_CPP)/build && \
-	    CC=$(CMAKE_CC) CXX=$(CMAKE_CXX) \
-	        cmake -DCMAKE_INSTALL_PREFIX=$(YAML_CPP_INSTALL_PREFIX) .. && \
-	    make && \
-	    make install && \
-	    rm -r include/gmock include/gtest
+	tools/install-yaml-cpp.sh
 
 $(BOOST_FILES):
 	tools/install-boost.sh

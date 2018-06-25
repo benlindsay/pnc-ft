@@ -29,7 +29,7 @@ std::string utils::get_absolute_path(std::string path) {
 }
 
 std::string utils::get_dirname(std::string path) {
-  return std::string(dirname(utils::strdup(path.c_str())));
+  return std::string(dirname(strdup(path.c_str())));
 }
 
 std::string utils::get_cwd() {
@@ -88,17 +88,6 @@ void utils::print_one_line(std::ofstream& file, std::string line) {
 
 void utils::print_one_line(std::ofstream& file, std::stringstream& line) {
   utils::print_one_line(file, line.str());
-}
-
-char* utils::strdup(const char* s) {
-  // https://stackoverflow.com/a/40766163/2680824
-  size_t slen = std::strlen(s);
-  char* result = (char*)malloc(slen + 1);
-  if (result == NULL) {
-    return NULL;
-  }
-  std::memcpy(result, s, slen + 1);
-  return result;
 }
 
 std::string utils::to_lower(std::string str) {

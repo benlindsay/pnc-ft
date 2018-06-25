@@ -9,9 +9,10 @@
 #include <unistd.h>   // getcwd
 #include <algorithm>  // std::transform
 #include <cstdlib>    // realpath
+#include <cstring>    // strdup
 #include <fstream>    // std::ofstream
 #include <iostream>   // std::cout, std::endl
-#include <string>     // std::string, strdup
+#include <string>     // std::string
 #include "globals.hpp"
 #include "yaml-cpp/yaml.h"
 
@@ -33,7 +34,6 @@ void print_one_line(const char*);
 void print_one_line(std::stringstream&);
 void print_one_line(std::ofstream&, std::string);
 void print_one_line(std::ofstream&, std::stringstream&);
-char* strdup(const char* s);
 std::string to_lower(std::string);
 void to_lower(YAML::Node);
 }  // namespace utils

@@ -30,7 +30,7 @@ Sim_Plan* Sim_Plan_Factory::New_Sim_Plan(fs::path input_file_path) {
   utils::to_lower(input);
 
   if (input["output_dir"]) {
-    fs::path absolute_output_dir = 
+    fs::path absolute_output_dir =
         fs::canonical(fs::absolute(input["output_dir"].as<std::string>()));
     input["output_dir"] = absolute_output_dir.string();
   } else {

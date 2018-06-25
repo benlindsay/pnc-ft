@@ -38,4 +38,4 @@ echo "$b2_output" | head -50
 echo "...\nSkipping a ton of lines of './b2 install' output...\n..."
 echo "$b2_output" | tail -50
 echo "Removing *.so* and *.dylib files..."
-rm $proj_root/lib/libboost*.so* $proj_root/lib/libboost*.dylib
+rm -f $proj_root/lib/libboost*.so* $proj_root/lib/libboost*.dylib

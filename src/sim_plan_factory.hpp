@@ -14,6 +14,7 @@
 class Sim_Plan_Factory {
  public:
   static Sim_Plan *New_Sim_Plan(YAML::Node input);
+  static Sim_Plan *New_Sim_Plan(fs::path input_file_path);
 };
 
 #endif  // SIM_PLAN_FACTORY_HPP

@@ -8,7 +8,7 @@ int main(int argc, const char *argv[]) {
   // Initialize RANK and NPROCS globals if MPI is defined
   utils::mpi_init_wrapper(argc, argv);
 
-  std::string input_file_path;
+  fs::path input_file_path;
   std::stringstream ss;
   if (argc < 2) {
     // If input file wasn't passed as command line argument,
@@ -17,17 +17,12 @@ int main(int argc, const char *argv[]) {
     utils::die(ss);
   } else {
     input_file_path = argv[1];
-    utils::print_one_line("Input file = " + input_file_path);
+    utils::print_one_line("Input file = " + input_file_path.string());
   }
-
-  // Read input file and check validity of inputs.
-  // Information from input file is stored in input_reader object
-  YAML::Node input = YAML::LoadFile(input_file_path);
-  utils::to_lower(input);
 
   // Generate simulation plan (series of simulations or just a single
   // simulation) based on input file
-  Sim_Plan *sim_plan = Sim_Plan_Factory::New_Sim_Plan(input);
+  Sim_Plan *sim_plan = Sim_Plan_Factory::New_Sim_Plan(input_file_path);
 
   // Run the simulation or series of simulations
   sim_plan->run();

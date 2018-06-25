@@ -22,35 +22,6 @@ void utils::die(std::string message) {
 
 void utils::die(std::stringstream& message) { utils::die(message.str()); }
 
-std::string utils::get_absolute_path(std::string path) {
-  char resolved_path[MAX_PATH_LEN];
-  realpath(path.c_str(), resolved_path);
-  return std::string(resolved_path);
-}
-
-std::string utils::get_dirname(std::string path) {
-  return std::string(dirname(strdup(path.c_str())));
-}
-
-std::string utils::get_cwd() {
-  char cwd[MAX_PATH_LEN];
-  getcwd(cwd, MAX_PATH_LEN);
-  return std::string(cwd);
-}
-
-std::string utils::join_paths(std::string path_1, std::string path_2) {
-  if (path_1.back() == '/') {
-    path_1.pop_back();
-  }
-  if (path_2.front() != '/') {
-    path_2 = "/" + path_2;
-  }
-  std::string unresolved_path = path_1 + path_2;
-  char resolved_path[MAX_PATH_LEN];
-  realpath(unresolved_path.c_str(), resolved_path);
-  return std::string(resolved_path);
-}
-
 void utils::mpi_init_wrapper(int argc, const char* argv[]) {
 #ifdef MPI
   MPI_Init(&argc, &argv);

@@ -14,7 +14,7 @@ fi
 
 rm -rf /tmp/$BOOST_VERSION
 cd /tmp
-tar -xjvf $TARBALL
+tar -xjf $TARBALL
 cd $BOOST_VERSION
 ./bootstrap.sh --prefix=$PROJ_ROOT --with-libraries=filesystem
 ./b2 install

@@ -92,7 +92,7 @@ fi
 
 src_dir=$(basename $tarball .tar.xz)
 if [ ! -d /tmp/$src_dir ]; then
-  tar xvfJ /tmp/$tarball -C /tmp/
+  tar xfJ /tmp/$tarball -C /tmp/
 else
   echo "Already extracted $tarball."
 fi

@@ -1,8 +1,8 @@
 // test_init.cpp
 //
 // Copyright (c) 2017 Ben Lindsay <benjlindsay@gmail.com>
-#include "catch.hpp"
 
+#include "catch.hpp"
 #include "test_init.hpp"
 
 TEST_CASE("Bare bones input", "[input]") {

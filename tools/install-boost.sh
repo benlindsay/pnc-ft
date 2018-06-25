@@ -17,4 +17,7 @@ cd /tmp
 tar -xjf $TARBALL
 cd $BOOST_VERSION
 ./bootstrap.sh --prefix=$PROJ_ROOT --with-libraries=filesystem
-./b2 install
+b2_output=$(./b2 install)
+echo $b2_output | head -50
+echo "...\nSkipping a ton of lines of './b2 install' output"
+echo $b2_output | tail -50

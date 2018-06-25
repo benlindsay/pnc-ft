@@ -1,9 +1,8 @@
 bin/
 build/
 html/
-include/gmock/
-include/gtest/
 include/yaml-cpp/
+include/boost/
 lib/
 tmp/
 tools/clang-format

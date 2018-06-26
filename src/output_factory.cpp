@@ -11,8 +11,7 @@ Output* Output_Factory::New_Output(Sim* sim, YAML::Node input,
   if (output_type == "summary") {
     std::vector<std::string> var_list = sim->default_summary_var_list;
     int print_freq = Output::default_print_freq;
-    std::string file_name =
-        Summary_Output::default_file_name;
+    std::string file_name = Summary_Output::default_file_name;
     int column_width = Output::default_column_width;
     bool write_header = true;
     for (YAML::const_iterator it = output_type_params.begin();

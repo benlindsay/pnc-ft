@@ -71,8 +71,8 @@ void Canonical_Sim::init_output_list(YAML::Node input) {
          it != outputs_node.end(); ++it) {
       std::string output_type = it->first.as<std::string>();
       YAML::Node output_type_params = it->second;  // outputs_node[output_type];
-      Output *output =
-          Output_Factory::New_Output(this, input, output_type, output_type_params);
+      Output *output = Output_Factory::New_Output(this, input, output_type,
+                                                  output_type_params);
       output_list.push_back(output);
     }
   }

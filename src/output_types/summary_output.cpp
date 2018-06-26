@@ -5,37 +5,41 @@
 #include "summary_output.hpp"
 
 Summary_Output::Summary_Output(Sim *sim, std::vector<std::string> var_list,
-                               int print_freq, std::string file_name,
+                               int print_freq, fs::path file_path,
                                int column_width, bool write_header)
     : Output(sim) {
-  init(sim, var_list, print_freq, file_name, column_width, write_header);
+  init(sim, var_list, print_freq, file_path, column_width, write_header);
 }
 
-Summary_Output::Summary_Output(Sim *sim, std::vector<std::string> var_list)
+Summary_Output::Summary_Output(Sim *sim, fs::path output_dir,
+                               std::vector<std::string> var_list)
     : Output(sim) {
-  init(sim, var_list);
+  init(sim, output_dir, var_list);
 }
 
 void Summary_Output::init(Sim *_sim, std::vector<std::string> _var_list,
-                          int _print_freq, std::string _file_name,
+                          int _print_freq, fs::path _file_path,
                           int _column_width, bool _write_header) {
   sim = _sim;
   var_list = _var_list;
   print_freq = _print_freq;
-  file_name = _file_name;
+  file_path = _file_path;
   column_width = _column_width;
   write_header = _write_header;
 
-  file.open(file_name);
+  // Create all directories in file_path if they don't exist
+  fs::create_directories(file_path.parent_path());
+  file.open(file_path);
 }
 
-void Summary_Output::init(Sim *sim, std::vector<std::string> var_list) {
+void Summary_Output::init(Sim *sim, fs::path output_dir,
+                          std::vector<std::string> var_list) {
   int print_freq = Output::default_print_freq;
-  std::string file_name = Summary_Output::default_file_name;
+  fs::path file_path = output_dir / fs::path(Summary_Output::default_file_name);
   int column_width = Output::default_column_width;
   bool write_header = true;
 
-  init(sim, var_list, print_freq, file_name, column_width, write_header);
+  init(sim, var_list, print_freq, file_path, column_width, write_header);
 }
 
 Summary_Output::~Summary_Output(void) { file.close(); }

@@ -13,7 +13,7 @@ class Sim;
 
 class Output_Factory {
  public:
-  static Output *New_Output(Sim *sim, std::string output_type,
+  static Output *New_Output(Sim *sim, YAML::Node input, std::string output_type,
                             YAML::Node output_type_params);
 };
 

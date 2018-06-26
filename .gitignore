@@ -3,6 +3,7 @@ build/
 html/
 include/yaml-cpp/
 include/boost/
+output/
 lib/
 tmp/
 tools/clang-format

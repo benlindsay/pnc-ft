@@ -5,12 +5,14 @@
 #include "output_factory.hpp"
 #include "output_types/summary_output.hpp"
 
-Output* Output_Factory::New_Output(Sim* sim, std::string output_type,
+Output* Output_Factory::New_Output(Sim* sim, YAML::Node input,
+                                   std::string output_type,
                                    YAML::Node output_type_params) {
   if (output_type == "summary") {
     std::vector<std::string> var_list = sim->default_summary_var_list;
     int print_freq = Output::default_print_freq;
-    std::string file_name = Summary_Output::default_file_name;
+    std::string file_name =
+        Summary_Output::default_file_name;
     int column_width = Output::default_column_width;
     bool write_header = true;
     for (YAML::const_iterator it = output_type_params.begin();
@@ -32,7 +34,9 @@ Output* Output_Factory::New_Output(Sim* sim, std::string output_type,
                    value.as<std::string>() + "'");
       }
     }
-    return new Summary_Output(sim, var_list, print_freq, file_name,
+    fs::path output_dir(input["output_dir"].as<std::string>());
+    fs::path file_path = output_dir / fs::path(file_name);
+    return new Summary_Output(sim, var_list, print_freq, file_path,
                               column_width, write_header);
   } else {
     utils::die("Can't recognize output type '" + output_type + "'!");

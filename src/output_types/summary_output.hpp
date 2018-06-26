@@ -12,8 +12,9 @@ class Output;
 class Summary_Output : public Output {
  public:
   Summary_Output(Sim *sim, std::vector<std::string> var_list, int print_freq,
-                 std::string file_name, int column_width, bool write_header);
-  Summary_Output(Sim *sim, std::vector<std::string> var_list);
+                 fs::path file_path, int column_width, bool write_header);
+  Summary_Output(Sim *sim, fs::path output_dir,
+                 std::vector<std::string> var_list);
   virtual ~Summary_Output();
   virtual bool is_time_to_write(void);
   virtual void write(void);
@@ -22,14 +23,14 @@ class Summary_Output : public Output {
 
  private:
   void init(Sim *sim, std::vector<std::string> var_list, int print_freq,
-            std::string file_name, int column_width, bool write_header);
-  void init(Sim *sim, std::vector<std::string> var_list);
+            fs::path file_path, int column_width, bool write_header);
+  void init(Sim *sim, fs::path output_dir, std::vector<std::string> var_list);
   int print_freq;
   int column_width;
   bool write_header;
   std::vector<std::string> var_list;
-  std::string file_name;
-  std::ofstream file;
+  fs::path file_path;
+  fs::ofstream file;
 };
 
 #endif  // SUMMARY_OUTPUT_HPP

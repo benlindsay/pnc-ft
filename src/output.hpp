@@ -5,9 +5,9 @@
 #ifndef OUTPUT_HPP
 #define OUTPUT_HPP
 
-#include <fstream>   // std::ofstream
-#include <iomanip>   // std::setw, std::setprecision
-#include <iostream>  // std::cout, std::endl
+#include <boost/filesystem/fstream.hpp>  // fs::ofstream
+#include <iomanip>                       // std::setw, std::setprecision
+#include <iostream>                      // std::cout, std::endl
 #include "sim.hpp"
 #include "utils.hpp"
 

@@ -57,9 +57,11 @@ void Canonical_Sim::init_default_summary_var_list() {
 }
 
 void Canonical_Sim::init_output_list(YAML::Node input) {
+  fs::path output_dir(input["output_dir"].as<std::string>());
   if (!input["outputs"]) {
     // If no outputs are specified in the input file, just do default outputs
-    Output *output = new Summary_Output(this, default_summary_var_list);
+    Output *output =
+        new Summary_Output(this, output_dir, default_summary_var_list);
     output_list.push_back(output);
   } else {
     // Otherwise, add an Output object for each output type specified in the
@@ -70,7 +72,7 @@ void Canonical_Sim::init_output_list(YAML::Node input) {
       std::string output_type = it->first.as<std::string>();
       YAML::Node output_type_params = it->second;  // outputs_node[output_type];
       Output *output =
-          Output_Factory::New_Output(this, output_type, output_type_params);
+          Output_Factory::New_Output(this, input, output_type, output_type_params);
       output_list.push_back(output);
     }
   }

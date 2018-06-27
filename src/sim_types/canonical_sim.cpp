@@ -7,6 +7,7 @@
 Canonical_Sim::Canonical_Sim(YAML::Node input) : Sim(input) {
   utils::print_one_line("Initializing Canonical_Sim");
   init_default_summary_var_list();
+  init_component_list(input);
   init_output_list(input);
   write_iter_0_outputs();
 }
@@ -47,6 +48,11 @@ std::string Canonical_Sim::get_var_as_string(std::string var_name,
     utils::die("Can't find match for " + var_name);
   }
   return " " + os.str();
+}
+
+void Canonical_Sim::init_component_list(YAML::Node input) {
+  Component::Species_Type species = Component::Species_Type::A;
+  component_list.push_back(new FT_Homopolymer(this, 40, species));
 }
 
 void Canonical_Sim::init_default_summary_var_list() {

@@ -6,6 +6,7 @@
 #define CANONICAL_SIM_HPP
 
 #include "../sim.hpp"
+#include "../component.hpp"
 
 class Canonical_Sim : public Sim {
  public:
@@ -16,8 +17,9 @@ class Canonical_Sim : public Sim {
   virtual void init_output_list(YAML::Node input);
   virtual void run(void);
 
- private:
+  std::vector<FT_Component*> component_list;
   std::complex<double> calc_hamiltonian();
+  void init_component_list(YAML::Node input);
   void update_hamiltonian();
   std::complex<double> hamiltonian;
   std::complex<double> hamiltonian_prev;

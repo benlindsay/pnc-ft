@@ -5,8 +5,8 @@
 #ifndef CANONICAL_SIM_HPP
 #define CANONICAL_SIM_HPP
 
-#include "../sim.hpp"
 #include "../component.hpp"
+#include "../sim.hpp"
 
 class Canonical_Sim : public Sim {
  public:

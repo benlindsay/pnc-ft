@@ -7,8 +7,6 @@
 
 #include "../output.hpp"
 
-class Output;
-
 class Summary_Output : public Output {
  public:
   Summary_Output(Sim *sim, std::vector<std::string> var_list, int print_freq,

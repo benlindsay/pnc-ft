@@ -26,6 +26,4 @@ class Output {
   Sim *sim;
 };
 
-#include "output_types/summary_output.hpp"
-
 #endif  // OUTPUT_HPP

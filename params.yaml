@@ -5,21 +5,21 @@ Nx: [10, 10]
 sim_plan: single_sim
 sim_type: canonical
 output_dir: output
-components:
-    homo_A:
-        type: homo
-        phi: 0.5
-        species: [A]
-        N: 30
-    homo_B:
-        type: homo
-        phi: 0.5
-        species: [B]
-        N: 40
-
 max_iter: 1000
-output_freq:
-    energy: 100
-    grid: 500
 
-test: 4e-10
+components:
+  - type: homopolymer
+    species: A
+    phi: 0.4
+    N: 20
+  - type: homopolymer
+    species: B
+    phi: 0.6
+    N: 40
+
+outputs:
+  summary:
+    var_list: ["iter", "h_real", "h_imag", "h_err"]
+    print_freq: 100
+    column_width: 15
+    write_header: true
